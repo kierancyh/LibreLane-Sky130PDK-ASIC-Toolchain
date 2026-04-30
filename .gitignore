@@ -1,0 +1,15 @@
+
+# Large EDA outputs (do not commit)
+runs/
+out/
+**/runs/
+**/out/
+*.gds
+*.oas
+*.def
+*.lef
+*.spef
+*.vcd
+*.saif
+*.log
+*.rpt

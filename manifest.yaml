@@ -1,0 +1,20 @@
+project:
+  title: "ASIC Flow "
+  author: "Kieran"
+  notes: "Drop any multi-file Verilog design under designs/<name>/src and set top_module in designs/<name>/variant.yaml"
+
+experiments:
+  - variant: designs/final_design
+    enabled: true
+
+# Available:
+# - rns_crt
+# - rns_mrc
+# - crns_crt
+# - crns_mrc
+# - rrns_crt
+# - rrns_mrc
+# - rrns_crt_all_lane
+# - rrns_mrc_all_lane
+# - final_alu_configurable
+# - final_design

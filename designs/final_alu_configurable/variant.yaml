@@ -1,0 +1,47 @@
+name: final_alu_configurable
+pdk: sky130A
+
+top_module: final_alu_top
+
+clock:
+  port: clk
+  mode: auto
+  max_ns_cap: 200
+
+sources:
+  - src/final_alu_cu.v
+  - src/final_alu_encoder.v
+  - src/final_alu_slice.v
+  - src/final_alu_recon.v
+  - src/final_alu_corrector.v
+  - src/final_alu_top.v
+
+precheck:
+  icarus:
+    enabled: true
+    testbench_top: tb_final_alu_top
+    testbench_sources:
+      - tb/**/*.v
+      - tb/**/*.sv
+    vcd_name: final_alu_rtl_precheck.vcd
+    stop_on_fail: true
+
+  yosys:
+    enabled: true
+    stop_on_fail: true
+    mode: structural
+
+fp:
+  core_util: 40
+
+ll_policy:
+  sdc: ../_shared/ll_policy/constraints.sdc
+  power_fair_tcl: ../_shared/ll_policy/power_fair.tcl
+  power_activity_tcl: ../_shared/ll_policy/power_activity.tcl
+  gpl_cell_padding: 1
+  run_antenna_repair: true
+  run_post_grt_design_repair: true
+  run_post_grt_resizer_timing: false
+  run_heuristic_diode_insertion: false
+  grt_antenna_margin: 50
+  grt_antenna_iters: 15

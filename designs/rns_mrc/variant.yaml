@@ -1,0 +1,36 @@
+name: rns_mrc
+pdk: sky130A
+
+top_module: rns_top_mrc
+
+clock:
+  port: clk
+  mode: auto
+  max_ns_cap: 200
+
+sources:
+  - src/**/*.v
+
+precheck:
+  icarus:
+    enabled: true
+    testbench_top: tb_rns_top_mrc
+    testbench_sources:
+      - tb/**/*.v
+      - tb/**/*.sv
+    vcd_name: rtl_precheck.vcd
+    stop_on_fail: true
+
+  yosys:
+    enabled: true
+    stop_on_fail: true
+    mode: structural
+
+fp:
+  core_util: 40
+
+ll_policy:
+  sdc: ../_shared/ll_policy/constraints.sdc
+  power_fair_tcl: ../_shared/ll_policy/power_fair.tcl
+  power_activity_tcl: ../_shared/ll_policy/power_activity.tcl
+  gpl_cell_padding: 2

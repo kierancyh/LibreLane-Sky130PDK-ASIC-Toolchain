@@ -1,0 +1,995 @@
+name: ASIC Flow Run Explorer
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+env:
+  OPENLANE_IMAGE: ${{ github.event.inputs.openlane_image || vars.OPENLANE_IMAGE || 'ghcr.io/efabless/openlane2:2.4.0.dev1' }}
+  OPEN_PDKS_REV: ${{ vars.OPEN_PDKS_REV || 'cd1748bb197f9b7af62a54507de6624e30363943' }}
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  plan:
+    name: Flow Plan
+    runs-on: ubuntu-latest
+    outputs:
+      safe_variant: ${{ steps.meta.outputs.safe_variant }}
+      variant_path: ${{ steps.meta.outputs.variant_path }}
+      site_key: ${{ steps.namespace.outputs.site_key }}
+      top_module: ${{ steps.meta.outputs.top_module }}
+      tb_top: ${{ steps.meta.outputs.tb_top }}
+      vcd_name: ${{ steps.meta.outputs.vcd_name }}
+      icarus_enabled: ${{ steps.meta.outputs.icarus_enabled }}
+      yosys_enabled: ${{ steps.meta.outputs.yosys_enabled }}
+      clock_max_ns_cap: ${{ steps.meta.outputs.clock_max_ns_cap }}
+      coarse_matrix_json: ${{ steps.coarse.outputs.matrix_json }}
+      summary_synth_strategy: ${{ steps.summary.outputs.summary_synth_strategy }}
+      summary_antenna_repair: ${{ steps.summary.outputs.summary_antenna_repair }}
+      summary_heuristic_diode_insertion: ${{ steps.summary.outputs.summary_heuristic_diode_insertion }}
+      summary_post_grt_design_repair: ${{ steps.summary.outputs.summary_post_grt_design_repair }}
+      summary_post_grt_resizer_timing: ${{ steps.summary.outputs.summary_post_grt_resizer_timing }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install lightweight planner deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml
+      - name: Validate ASIC backend image configuration
+        run: |
+          if [ -z "${OPENLANE_IMAGE}" ]; then
+            echo "OPENLANE_IMAGE is not set." >&2
+            echo "Set repository variable OPENLANE_IMAGE or provide workflow_dispatch input openlane_image." >&2
+            exit 1
+          fi
+          echo "Using OPENLANE_IMAGE=${OPENLANE_IMAGE}"
+      - name: Resolve active variant metadata
+        id: meta
+        run: |
+          python tools/scripts/resolve_variant_meta.py \
+            --variant "${{ github.event.inputs.safe_variant || '' }}" \
+            --out resolved_meta.json \
+            --github-output "$GITHUB_OUTPUT"
+      - name: Derive site key
+        id: namespace
+        run: |
+          set -euo pipefail
+          echo "site_key=$(basename "${{ steps.meta.outputs.variant_path }}")" >> "$GITHUB_OUTPUT"
+      - name: Build coarse matrix
+        id: coarse
+        run: |
+          matrix_json=$(python tools/scripts/make_clock_matrix.py --min-clock-ns 0 --max-clock-ns "${{ steps.meta.outputs.clock_max_ns_cap }}" --step-ns 20)
+          echo "matrix_json=${matrix_json}" >> "$GITHUB_OUTPUT"
+      - name: Capture Workflow Summary Labels
+        id: summary
+        run: |
+          {
+            echo "summary_synth_strategy=${{ github.event.inputs.summary_synth_strategy || 'Default' }}"
+            echo "summary_antenna_repair=${{ github.event.inputs.summary_antenna_repair || 'Enabled' }}"
+            echo "summary_heuristic_diode_insertion=${{ github.event.inputs.summary_heuristic_diode_insertion || 'Enabled' }}"
+            echo "summary_post_grt_design_repair=${{ github.event.inputs.summary_post_grt_design_repair || 'Enabled' }}"
+            echo "summary_post_grt_resizer_timing=${{ github.event.inputs.summary_post_grt_resizer_timing || 'Disabled' }}"
+          } >> "$GITHUB_OUTPUT"
+      - name: Flow Plan Summary
+        run: |
+          {
+            echo "## Flow Plan"
+            echo ""
+            echo "- Variant: ${{ steps.meta.outputs.safe_variant }}"
+            echo "- Variant path: ${{ steps.meta.outputs.variant_path }}"
+            echo "- Site key: ${{ steps.namespace.outputs.site_key }}"
+            echo "- Top module: ${{ steps.meta.outputs.top_module }}"
+            echo "- Testbench top: ${{ steps.meta.outputs.tb_top }}"
+            echo "- OpenLane image: ${OPENLANE_IMAGE}"
+            echo "- open_pdks revision: ${OPEN_PDKS_REV}"
+            echo "- Icarus enabled: ${{ steps.meta.outputs.icarus_enabled }}"
+            echo "- Yosys enabled: ${{ steps.meta.outputs.yosys_enabled }}"
+            echo "- Coarse matrix: ${{ steps.coarse.outputs.matrix_json }}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  rtl-precheck:
+    name: RTL Precheck
+    runs-on: ubuntu-latest
+    needs: plan
+    outputs:
+      status: ${{ steps.export.outputs.status }}
+      passed: ${{ steps.export.outputs.passed }}
+      gate_ok: ${{ steps.export.outputs.gate_ok }}
+      vcd_present: ${{ steps.export.outputs.vcd_present }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install RTL precheck deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml
+      - name: Resolve active variant metadata
+        run: |
+          python tools/scripts/resolve_variant_meta.py \
+            --variant "${{ needs.plan.outputs.safe_variant }}" \
+            --out resolved_meta.json
+      - name: Run Icarus RTL precheck
+        run: |
+          python tools/scripts/run_icarus_precheck.py --meta-json resolved_meta.json --out-dir precheck/rtl
+      - name: Export RTL precheck outputs
+        id: export
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          status = json.loads(Path('precheck/rtl/status.json').read_text())
+          gate_ok = 'true' if (status.get('passed') or status.get('status') == 'SKIP') else 'false'
+          Path('_rtl_precheck_outputs.txt').write_text(
+              '\n'.join([
+                  f"status={status.get('status','FAIL')}",
+                  f"passed={'true' if status.get('passed') else 'false'}",
+                  f"gate_ok={gate_ok}",
+                  f"vcd_present={'true' if status.get('vcd_present') else 'false'}",
+              ]) + '\n',
+              encoding='utf-8'
+          )
+          PY
+          cat _rtl_precheck_outputs.txt >> "$GITHUB_OUTPUT"
+      - name: Upload RTL precheck artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: precheck-rtl-${{ needs.plan.outputs.safe_variant }}
+          path: precheck/rtl/
+          if-no-files-found: error
+      - name: RTL Precheck Summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+          s = json.loads(Path('precheck/rtl/status.json').read_text())
+          print('\n'.join([
+            '## RTL Precheck',
+            '',
+            f"- Status: {s.get('status')}",
+            f"- Top: {s.get('top_module')}",
+            f"- TB top: {s.get('testbench_top')}",
+            f"- VCD present: {'yes' if s.get('vcd_present') else 'no'}",
+          ]))
+          PY
+
+  yosys-precheck:
+    name: Yosys Precheck
+    runs-on: ubuntu-latest
+    needs: [plan, rtl-precheck]
+    outputs:
+      status: ${{ steps.export.outputs.status }}
+      passed: ${{ steps.export.outputs.passed }}
+      gate_ok: ${{ steps.export.outputs.gate_ok }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Yosys precheck deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y yosys
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml
+      - name: Resolve active variant metadata
+        run: |
+          python tools/scripts/resolve_variant_meta.py \
+            --variant "${{ needs.plan.outputs.safe_variant }}" \
+            --out resolved_meta.json
+      - name: Run Yosys structural precheck
+        run: |
+          python tools/scripts/run_yosys_precheck.py --meta-json resolved_meta.json --out-dir precheck/yosys
+      - name: Export Yosys precheck outputs
+        id: export
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          status = json.loads(Path('precheck/yosys/status.json').read_text())
+          gate_ok = 'true' if (status.get('passed') or status.get('status') == 'SKIP') else 'false'
+          Path('_yosys_precheck_outputs.txt').write_text(
+              '\n'.join([
+                  f"status={status.get('status','FAIL')}",
+                  f"passed={'true' if status.get('passed') else 'false'}",
+                  f"gate_ok={gate_ok}",
+              ]) + '\n',
+              encoding='utf-8'
+          )
+          PY
+          cat _yosys_precheck_outputs.txt >> "$GITHUB_OUTPUT"
+      - name: Upload Yosys precheck artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: precheck-yosys-${{ needs.plan.outputs.safe_variant }}
+          path: precheck/yosys/
+          if-no-files-found: error
+      - name: Yosys Precheck Summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+          s = json.loads(Path('precheck/yosys/status.json').read_text())
+          print('\n'.join([
+            '## Yosys Precheck',
+            '',
+            f"- Status: {s.get('status')}",
+            f"- Top: {s.get('top_module')}",
+            f"- Warning count: {s.get('warning_count', 0)}",
+          ]))
+          PY
+
+  coarse-sweep:
+    name: Coarse Sweep (${{ matrix.clock_ns }} ns)
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    needs: [plan, rtl-precheck, yosys-precheck]
+    if: ${{ needs.rtl-precheck.outputs.gate_ok == 'true' && needs.yosys-precheck.outputs.gate_ok == 'true' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        clock_ns: ${{ fromJson(needs.plan.outputs.coarse_matrix_json) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install flow deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install volare pyyaml
+      - name: Restore PDK cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.volare
+          key: ${{ runner.os }}-sky130-volare-${{ env.OPEN_PDKS_REV }}
+          restore-keys: |
+            ${{ runner.os }}-sky130-volare-
+      - name: Install Sky130 PDK with Volare
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          mkdir -p "${PDK_ROOT}"
+          volare enable --pdk sky130 "${OPEN_PDKS_REV}"
+      - name: Pull OpenLane image
+        run: |
+          docker pull "${OPENLANE_IMAGE}"
+      - name: Verify resolved flow inputs
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          python tools/scripts/gen_config.py             --variant "${{ needs.plan.outputs.safe_variant }}"             --clock_ns "${{ matrix.clock_ns }}"             --pdk-root "${PDK_ROOT}"             --out preflight_config.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg = json.loads(Path("preflight_config.json").read_text(encoding="utf-8"))
+          print("Commit:", "${{ github.sha }}")
+          print("DESIGN_NAME =", cfg.get("DESIGN_NAME"))
+          print("CLOCK_PERIOD =", cfg.get("CLOCK_PERIOD"))
+          print("FP_CORE_UTIL =", cfg.get("FP_CORE_UTIL"))
+          print("GPL_CELL_PADDING =", cfg.get("GPL_CELL_PADDING"))
+          print("RUN_ANTENNA_REPAIR =", cfg.get("RUN_ANTENNA_REPAIR"))
+          print("RUN_HEURISTIC_DIODE_INSERTION =", cfg.get("RUN_HEURISTIC_DIODE_INSERTION"))
+          print("RUN_POST_GRT_DESIGN_REPAIR =", cfg.get("RUN_POST_GRT_DESIGN_REPAIR"))
+          print("RUN_POST_GRT_RESIZER_TIMING =", cfg.get("RUN_POST_GRT_RESIZER_TIMING"))
+          print("GRT_ANTENNA_MARGIN =", cfg.get("GRT_ANTENNA_MARGIN"))
+          print("GRT_ANTENNA_ITERS =", cfg.get("GRT_ANTENNA_ITERS"))
+          print("HEURISTIC_ANTENNA_THRESHOLD =", cfg.get("HEURISTIC_ANTENNA_THRESHOLD"))
+          print("PNR_SDC_FILE =", cfg.get("PNR_SDC_FILE"))
+          print("SIGNOFF_SDC_FILE =", cfg.get("SIGNOFF_SDC_FILE"))
+          for key in ("PNR_SDC_FILE", "SIGNOFF_SDC_FILE"):
+              path = Path(cfg.get(key, ""))
+              print(f"----- {key}: {path} -----")
+              if path.exists():
+                  print(path.read_text(encoding="utf-8", errors="ignore"))
+              else:
+                  print("(missing)")
+          PY
+      - name: Run coarse ASIC attempt
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          python tools/scripts/run_autoflow_compat.py \
+            --variant "${{ needs.plan.outputs.safe_variant }}" \
+            --clock-ns "${{ matrix.clock_ns }}" \
+            --pdk-root "${PDK_ROOT}" \
+            --openlane-image "${OPENLANE_IMAGE}" \
+            --stage-label coarse \
+            --artifact-name "coarse-${{ needs.plan.outputs.safe_variant }}-${{ matrix.clock_ns }}ns-r${{ github.run_id }}"
+      - name: Upload coarse attempt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coarse-${{ needs.plan.outputs.safe_variant }}-${{ matrix.clock_ns }}ns-r${{ github.run_id }}
+          path: ci_out/${{ needs.plan.outputs.safe_variant }}/
+          if-no-files-found: warn
+
+  select-coarse-bracket:
+    name: Select Coarse Bracket
+    runs-on: ubuntu-latest
+    needs: [coarse-sweep]
+    outputs:
+      matrix_json: ${{ steps.select.outputs.matrix_json }}
+      upper_pass_clock_ns: ${{ steps.select.outputs.upper_pass_clock_ns }}
+      lower_fail_clock_ns: ${{ steps.select.outputs.lower_fail_clock_ns }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download coarse artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: downloaded_artifacts
+          pattern: coarse-*
+          merge-multiple: false
+      - name: Select coarse bracket
+        id: select
+        run: |
+          python tools/scripts/select_clock_bracket.py \
+            --artifacts-root downloaded_artifacts \
+            --next-step-ns 5 \
+            --stage-label coarse \
+            --next-stage-label mid \
+            --summary-md bracket_coarse.md \
+            --summary-json bracket_coarse.json \
+            --github-output "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coarse-bracket-summary
+          path: |
+            bracket_coarse.md
+            bracket_coarse.json
+
+  mid-refine-sweep:
+    name: Mid Refine Sweep (${{ matrix.clock_ns }} ns)
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    needs: [plan, rtl-precheck, yosys-precheck, select-coarse-bracket]
+    if: ${{ needs.rtl-precheck.outputs.gate_ok == 'true' && needs.yosys-precheck.outputs.gate_ok == 'true' && needs.select-coarse-bracket.outputs.matrix_json != '[]' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        clock_ns: ${{ fromJson(needs.select-coarse-bracket.outputs.matrix_json) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install flow deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install volare pyyaml
+      - name: Restore PDK cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.volare
+          key: ${{ runner.os }}-sky130-volare-${{ env.OPEN_PDKS_REV }}
+          restore-keys: |
+            ${{ runner.os }}-sky130-volare-
+      - name: Install Sky130 PDK with Volare
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          mkdir -p "${PDK_ROOT}"
+          volare enable --pdk sky130 "${OPEN_PDKS_REV}"
+      - name: Pull OpenLane image
+        run: |
+          docker pull "${OPENLANE_IMAGE}"
+      - name: Verify resolved flow inputs
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          python tools/scripts/gen_config.py             --variant "${{ needs.plan.outputs.safe_variant }}"             --clock_ns "${{ matrix.clock_ns }}"             --pdk-root "${PDK_ROOT}"             --out preflight_config.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg = json.loads(Path("preflight_config.json").read_text(encoding="utf-8"))
+          print("Commit:", "${{ github.sha }}")
+          print("DESIGN_NAME =", cfg.get("DESIGN_NAME"))
+          print("CLOCK_PERIOD =", cfg.get("CLOCK_PERIOD"))
+          print("FP_CORE_UTIL =", cfg.get("FP_CORE_UTIL"))
+          print("GPL_CELL_PADDING =", cfg.get("GPL_CELL_PADDING"))
+          print("RUN_ANTENNA_REPAIR =", cfg.get("RUN_ANTENNA_REPAIR"))
+          print("RUN_HEURISTIC_DIODE_INSERTION =", cfg.get("RUN_HEURISTIC_DIODE_INSERTION"))
+          print("RUN_POST_GRT_DESIGN_REPAIR =", cfg.get("RUN_POST_GRT_DESIGN_REPAIR"))
+          print("RUN_POST_GRT_RESIZER_TIMING =", cfg.get("RUN_POST_GRT_RESIZER_TIMING"))
+          print("GRT_ANTENNA_MARGIN =", cfg.get("GRT_ANTENNA_MARGIN"))
+          print("GRT_ANTENNA_ITERS =", cfg.get("GRT_ANTENNA_ITERS"))
+          print("HEURISTIC_ANTENNA_THRESHOLD =", cfg.get("HEURISTIC_ANTENNA_THRESHOLD"))
+          print("PNR_SDC_FILE =", cfg.get("PNR_SDC_FILE"))
+          print("SIGNOFF_SDC_FILE =", cfg.get("SIGNOFF_SDC_FILE"))
+          for key in ("PNR_SDC_FILE", "SIGNOFF_SDC_FILE"):
+              path = Path(cfg.get(key, ""))
+              print(f"----- {key}: {path} -----")
+              if path.exists():
+                  print(path.read_text(encoding="utf-8", errors="ignore"))
+              else:
+                  print("(missing)")
+          PY
+      - name: Run mid refine ASIC attempt
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          python tools/scripts/run_autoflow_compat.py \
+            --variant "${{ needs.plan.outputs.safe_variant }}" \
+            --clock-ns "${{ matrix.clock_ns }}" \
+            --pdk-root "${PDK_ROOT}" \
+            --openlane-image "${OPENLANE_IMAGE}" \
+            --stage-label mid \
+            --artifact-name "mid-${{ needs.plan.outputs.safe_variant }}-${{ matrix.clock_ns }}ns-r${{ github.run_id }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mid-${{ needs.plan.outputs.safe_variant }}-${{ matrix.clock_ns }}ns-r${{ github.run_id }}
+          path: ci_out/${{ needs.plan.outputs.safe_variant }}/
+          if-no-files-found: warn
+
+  select-mid-bracket:
+    name: Select Mid Bracket
+    runs-on: ubuntu-latest
+    needs: [coarse-sweep, mid-refine-sweep]
+    outputs:
+      matrix_json: ${{ steps.select.outputs.matrix_json }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download coarse + mid artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: downloaded_artifacts
+          pattern: "*"
+          merge-multiple: false
+      - name: Select mid bracket
+        id: select
+        run: |
+          python tools/scripts/select_clock_bracket.py \
+            --artifacts-root downloaded_artifacts \
+            --next-step-ns 1 \
+            --stage-label mid \
+            --next-stage-label refine-1 \
+            --summary-md bracket_mid.md \
+            --summary-json bracket_mid.json \
+            --github-output "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mid-bracket-summary
+          path: |
+            bracket_mid.md
+            bracket_mid.json
+
+  refine-sweep-1:
+    name: Refine Sweep 1 (${{ matrix.clock_ns }} ns)
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    needs: [plan, rtl-precheck, yosys-precheck, select-mid-bracket]
+    if: ${{ needs.rtl-precheck.outputs.gate_ok == 'true' && needs.yosys-precheck.outputs.gate_ok == 'true' && needs.select-mid-bracket.outputs.matrix_json != '[]' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        clock_ns: ${{ fromJson(needs.select-mid-bracket.outputs.matrix_json) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install flow deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install volare pyyaml
+      - name: Restore PDK cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.volare
+          key: ${{ runner.os }}-sky130-volare-${{ env.OPEN_PDKS_REV }}
+          restore-keys: |
+            ${{ runner.os }}-sky130-volare-
+      - name: Install Sky130 PDK with Volare
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          mkdir -p "${PDK_ROOT}"
+          volare enable --pdk sky130 "${OPEN_PDKS_REV}"
+      - name: Pull OpenLane image
+        run: |
+          docker pull "${OPENLANE_IMAGE}"
+      - name: Verify resolved flow inputs
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          python tools/scripts/gen_config.py             --variant "${{ needs.plan.outputs.safe_variant }}"             --clock_ns "${{ matrix.clock_ns }}"             --pdk-root "${PDK_ROOT}"             --out preflight_config.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg = json.loads(Path("preflight_config.json").read_text(encoding="utf-8"))
+          print("Commit:", "${{ github.sha }}")
+          print("DESIGN_NAME =", cfg.get("DESIGN_NAME"))
+          print("CLOCK_PERIOD =", cfg.get("CLOCK_PERIOD"))
+          print("FP_CORE_UTIL =", cfg.get("FP_CORE_UTIL"))
+          print("GPL_CELL_PADDING =", cfg.get("GPL_CELL_PADDING"))
+          print("RUN_ANTENNA_REPAIR =", cfg.get("RUN_ANTENNA_REPAIR"))
+          print("RUN_HEURISTIC_DIODE_INSERTION =", cfg.get("RUN_HEURISTIC_DIODE_INSERTION"))
+          print("RUN_POST_GRT_DESIGN_REPAIR =", cfg.get("RUN_POST_GRT_DESIGN_REPAIR"))
+          print("RUN_POST_GRT_RESIZER_TIMING =", cfg.get("RUN_POST_GRT_RESIZER_TIMING"))
+          print("GRT_ANTENNA_MARGIN =", cfg.get("GRT_ANTENNA_MARGIN"))
+          print("GRT_ANTENNA_ITERS =", cfg.get("GRT_ANTENNA_ITERS"))
+          print("HEURISTIC_ANTENNA_THRESHOLD =", cfg.get("HEURISTIC_ANTENNA_THRESHOLD"))
+          print("PNR_SDC_FILE =", cfg.get("PNR_SDC_FILE"))
+          print("SIGNOFF_SDC_FILE =", cfg.get("SIGNOFF_SDC_FILE"))
+          for key in ("PNR_SDC_FILE", "SIGNOFF_SDC_FILE"):
+              path = Path(cfg.get(key, ""))
+              print(f"----- {key}: {path} -----")
+              if path.exists():
+                  print(path.read_text(encoding="utf-8", errors="ignore"))
+              else:
+                  print("(missing)")
+          PY
+      - name: Run refine-1 ASIC attempt
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          python tools/scripts/run_autoflow_compat.py \
+            --variant "${{ needs.plan.outputs.safe_variant }}" \
+            --clock-ns "${{ matrix.clock_ns }}" \
+            --pdk-root "${PDK_ROOT}" \
+            --openlane-image "${OPENLANE_IMAGE}" \
+            --stage-label refine-1 \
+            --artifact-name "refine1-${{ needs.plan.outputs.safe_variant }}-${{ matrix.clock_ns }}ns-r${{ github.run_id }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: refine1-${{ needs.plan.outputs.safe_variant }}-${{ matrix.clock_ns }}ns-r${{ github.run_id }}
+          path: ci_out/${{ needs.plan.outputs.safe_variant }}/
+          if-no-files-found: warn
+
+  select-refine-1:
+    name: Select Refine 1
+    runs-on: ubuntu-latest
+    needs: [coarse-sweep, mid-refine-sweep, refine-sweep-1, plan]
+    outputs:
+      matrix_json: ${{ steps.select.outputs.matrix_json }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          path: downloaded_artifacts
+          pattern: "*"
+          merge-multiple: false
+      - name: Select next matrix for 0.5 ns stage
+        id: select
+        run: |
+          python tools/scripts/select_refine_matrix.py \
+            --artifacts-root downloaded_artifacts \
+            --mode refine \
+            --step-ns 0.5 \
+            --min-clock-ns 0 \
+            --max-clock-ns "${{ needs.plan.outputs.clock_max_ns_cap }}" \
+            --tolerance-ns 0.5 \
+            --batch-size 8 \
+            --github-output "$GITHUB_OUTPUT"
+
+  refine-sweep-2:
+    name: Refine Sweep 2 (${{ matrix.clock_ns }} ns)
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    needs: [plan, rtl-precheck, yosys-precheck, select-refine-1]
+    if: ${{ needs.rtl-precheck.outputs.gate_ok == 'true' && needs.yosys-precheck.outputs.gate_ok == 'true' && needs.select-refine-1.outputs.matrix_json != '[]' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        clock_ns: ${{ fromJson(needs.select-refine-1.outputs.matrix_json) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install flow deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install volare pyyaml
+      - name: Restore PDK cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.volare
+          key: ${{ runner.os }}-sky130-volare-${{ env.OPEN_PDKS_REV }}
+          restore-keys: |
+            ${{ runner.os }}-sky130-volare-
+      - name: Install Sky130 PDK with Volare
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          mkdir -p "${PDK_ROOT}"
+          volare enable --pdk sky130 "${OPEN_PDKS_REV}"
+      - name: Pull OpenLane image
+        run: |
+          docker pull "${OPENLANE_IMAGE}"
+      - name: Verify resolved flow inputs
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          python tools/scripts/gen_config.py             --variant "${{ needs.plan.outputs.safe_variant }}"             --clock_ns "${{ matrix.clock_ns }}"             --pdk-root "${PDK_ROOT}"             --out preflight_config.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg = json.loads(Path("preflight_config.json").read_text(encoding="utf-8"))
+          print("Commit:", "${{ github.sha }}")
+          print("DESIGN_NAME =", cfg.get("DESIGN_NAME"))
+          print("CLOCK_PERIOD =", cfg.get("CLOCK_PERIOD"))
+          print("FP_CORE_UTIL =", cfg.get("FP_CORE_UTIL"))
+          print("GPL_CELL_PADDING =", cfg.get("GPL_CELL_PADDING"))
+          print("RUN_ANTENNA_REPAIR =", cfg.get("RUN_ANTENNA_REPAIR"))
+          print("RUN_HEURISTIC_DIODE_INSERTION =", cfg.get("RUN_HEURISTIC_DIODE_INSERTION"))
+          print("RUN_POST_GRT_DESIGN_REPAIR =", cfg.get("RUN_POST_GRT_DESIGN_REPAIR"))
+          print("RUN_POST_GRT_RESIZER_TIMING =", cfg.get("RUN_POST_GRT_RESIZER_TIMING"))
+          print("GRT_ANTENNA_MARGIN =", cfg.get("GRT_ANTENNA_MARGIN"))
+          print("GRT_ANTENNA_ITERS =", cfg.get("GRT_ANTENNA_ITERS"))
+          print("HEURISTIC_ANTENNA_THRESHOLD =", cfg.get("HEURISTIC_ANTENNA_THRESHOLD"))
+          print("PNR_SDC_FILE =", cfg.get("PNR_SDC_FILE"))
+          print("SIGNOFF_SDC_FILE =", cfg.get("SIGNOFF_SDC_FILE"))
+          for key in ("PNR_SDC_FILE", "SIGNOFF_SDC_FILE"):
+              path = Path(cfg.get(key, ""))
+              print(f"----- {key}: {path} -----")
+              if path.exists():
+                  print(path.read_text(encoding="utf-8", errors="ignore"))
+              else:
+                  print("(missing)")
+          PY
+      - name: Run refine-2 ASIC attempt
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          python tools/scripts/run_autoflow_compat.py \
+            --variant "${{ needs.plan.outputs.safe_variant }}" \
+            --clock-ns "${{ matrix.clock_ns }}" \
+            --pdk-root "${PDK_ROOT}" \
+            --openlane-image "${OPENLANE_IMAGE}" \
+            --stage-label refine-2 \
+            --artifact-name "refine2-${{ needs.plan.outputs.safe_variant }}-${{ matrix.clock_ns }}ns-r${{ github.run_id }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: refine2-${{ needs.plan.outputs.safe_variant }}-${{ matrix.clock_ns }}ns-r${{ github.run_id }}
+          path: ci_out/${{ needs.plan.outputs.safe_variant }}/
+          if-no-files-found: warn
+
+  select-refine-2:
+    name: Select Refine 2
+    runs-on: ubuntu-latest
+    needs: [coarse-sweep, mid-refine-sweep, refine-sweep-1, refine-sweep-2, plan]
+    outputs:
+      matrix_json: ${{ steps.select.outputs.matrix_json }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          path: downloaded_artifacts
+          pattern: "*"
+          merge-multiple: false
+      - name: Select next matrix for 0.125 ns stage
+        id: select
+        run: |
+          python tools/scripts/select_refine_matrix.py \
+            --artifacts-root downloaded_artifacts \
+            --mode refine \
+            --step-ns 0.125 \
+            --min-clock-ns 0 \
+            --max-clock-ns "${{ needs.plan.outputs.clock_max_ns_cap }}" \
+            --tolerance-ns 0.125 \
+            --batch-size 8 \
+            --github-output "$GITHUB_OUTPUT"
+
+  refine-sweep-3:
+    name: Refine Sweep 3 (${{ matrix.clock_ns }} ns)
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    needs: [plan, rtl-precheck, yosys-precheck, select-refine-2]
+    if: ${{ needs.rtl-precheck.outputs.gate_ok == 'true' && needs.yosys-precheck.outputs.gate_ok == 'true' && needs.select-refine-2.outputs.matrix_json != '[]' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        clock_ns: ${{ fromJson(needs.select-refine-2.outputs.matrix_json) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install flow deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install volare pyyaml
+      - name: Restore PDK cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.volare
+          key: ${{ runner.os }}-sky130-volare-${{ env.OPEN_PDKS_REV }}
+          restore-keys: |
+            ${{ runner.os }}-sky130-volare-
+      - name: Install Sky130 PDK with Volare
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          mkdir -p "${PDK_ROOT}"
+          volare enable --pdk sky130 "${OPEN_PDKS_REV}"
+      - name: Pull OpenLane image
+        run: |
+          docker pull "${OPENLANE_IMAGE}"
+      - name: Verify resolved flow inputs
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          python tools/scripts/gen_config.py             --variant "${{ needs.plan.outputs.safe_variant }}"             --clock_ns "${{ matrix.clock_ns }}"             --pdk-root "${PDK_ROOT}"             --out preflight_config.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg = json.loads(Path("preflight_config.json").read_text(encoding="utf-8"))
+          print("Commit:", "${{ github.sha }}")
+          print("DESIGN_NAME =", cfg.get("DESIGN_NAME"))
+          print("CLOCK_PERIOD =", cfg.get("CLOCK_PERIOD"))
+          print("FP_CORE_UTIL =", cfg.get("FP_CORE_UTIL"))
+          print("GPL_CELL_PADDING =", cfg.get("GPL_CELL_PADDING"))
+          print("RUN_ANTENNA_REPAIR =", cfg.get("RUN_ANTENNA_REPAIR"))
+          print("RUN_HEURISTIC_DIODE_INSERTION =", cfg.get("RUN_HEURISTIC_DIODE_INSERTION"))
+          print("RUN_POST_GRT_DESIGN_REPAIR =", cfg.get("RUN_POST_GRT_DESIGN_REPAIR"))
+          print("RUN_POST_GRT_RESIZER_TIMING =", cfg.get("RUN_POST_GRT_RESIZER_TIMING"))
+          print("GRT_ANTENNA_MARGIN =", cfg.get("GRT_ANTENNA_MARGIN"))
+          print("GRT_ANTENNA_ITERS =", cfg.get("GRT_ANTENNA_ITERS"))
+          print("HEURISTIC_ANTENNA_THRESHOLD =", cfg.get("HEURISTIC_ANTENNA_THRESHOLD"))
+          print("PNR_SDC_FILE =", cfg.get("PNR_SDC_FILE"))
+          print("SIGNOFF_SDC_FILE =", cfg.get("SIGNOFF_SDC_FILE"))
+          for key in ("PNR_SDC_FILE", "SIGNOFF_SDC_FILE"):
+              path = Path(cfg.get(key, ""))
+              print(f"----- {key}: {path} -----")
+              if path.exists():
+                  print(path.read_text(encoding="utf-8", errors="ignore"))
+              else:
+                  print("(missing)")
+          PY
+      - name: Run refine-3 ASIC attempt
+        env:
+          PDK_ROOT: ${{ github.workspace }}/.volare
+        run: |
+          python tools/scripts/run_autoflow_compat.py \
+            --variant "${{ needs.plan.outputs.safe_variant }}" \
+            --clock-ns "${{ matrix.clock_ns }}" \
+            --pdk-root "${PDK_ROOT}" \
+            --openlane-image "${OPENLANE_IMAGE}" \
+            --stage-label refine-3 \
+            --artifact-name "refine3-${{ needs.plan.outputs.safe_variant }}-${{ matrix.clock_ns }}ns-r${{ github.run_id }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: refine3-${{ needs.plan.outputs.safe_variant }}-${{ matrix.clock_ns }}ns-r${{ github.run_id }}
+          path: ci_out/${{ needs.plan.outputs.safe_variant }}/
+          if-no-files-found: warn
+
+  compare-runs:
+    name: Compare Runs
+    runs-on: ubuntu-latest
+    if: always()
+    needs:
+      - plan
+      - rtl-precheck
+      - yosys-precheck
+      - coarse-sweep
+      - select-coarse-bracket
+      - mid-refine-sweep
+      - select-mid-bracket
+      - refine-sweep-1
+      - select-refine-1
+      - refine-sweep-2
+      - select-refine-2
+      - refine-sweep-3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download all workflow artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: incoming_artifacts
+          merge-multiple: false
+      - name: Build run explorer outputs
+        run: |
+          python tools/scripts/compare_runs.py \
+            --artifacts-root incoming_artifacts \
+            --summary-md summary.md \
+            --summary-csv summary.csv \
+            --best-json best.json \
+            --best-bundle-dir best-layout-bundle \
+            --site-dir incoming_site \
+            --site-subdir "${{ needs.plan.outputs.site_key }}" \
+            --repo-slug "${{ github.repository }}" \
+            --run-id "${{ github.run_id }}" \
+            --summary-synth-strategy "${{ needs.plan.outputs.summary_synth_strategy }}" \
+            --summary-antenna-repair "${{ needs.plan.outputs.summary_antenna_repair }}" \
+            --summary-heuristic-diode-insertion "${{ needs.plan.outputs.summary_heuristic_diode_insertion }}" \
+            --summary-post-grt-design-repair "${{ needs.plan.outputs.summary_post_grt_design_repair }}" \
+            --summary-post-grt-resizer-timing "${{ needs.plan.outputs.summary_post_grt_resizer_timing }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: run-explorer-site
+          path: incoming_site/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: best-layout-bundle
+          path: best-layout-bundle/
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        with:
+          name: run-summary
+          path: |
+            summary.md
+            summary.csv
+            best.json
+          if-no-files-found: error
+
+  deploy-run-explorer:
+    name: Deploy Run Explorer
+    runs-on: ubuntu-latest
+    needs: [plan, compare-runs]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download built site
+        uses: actions/download-artifact@v4
+        with:
+          name: run-explorer-site
+          path: incoming_site
+      - name: Normalize downloaded site layout
+        run: |
+          set -euo pipefail
+          if [ -d incoming_site/run-explorer-site ]; then
+            rm -rf incoming_site_normalized
+            mkdir -p incoming_site_normalized
+            cp -a incoming_site/run-explorer-site/. incoming_site_normalized/
+            rm -rf incoming_site
+            mv incoming_site_normalized incoming_site
+          fi
+          test -f incoming_site/index.html
+      - name: Prepare gh-pages worktree
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SITE_KEY: ${{ needs.plan.outputs.site_key }}
+        run: |
+          set -euo pipefail
+          if git show-ref --quiet refs/remotes/origin/gh-pages; then
+            git worktree add gh-pages origin/gh-pages
+          else
+            git worktree add --detach gh-pages
+            git -C gh-pages checkout --orphan gh-pages
+            git -C gh-pages rm -rf . || true
+            git -C gh-pages commit --allow-empty -m "Initialize gh-pages"
+            git -C gh-pages remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" || true
+            git -C gh-pages push origin HEAD:gh-pages
+          fi
+          if git -C gh-pages remote get-url origin >/dev/null 2>&1; then
+            git -C gh-pages remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          else
+            git -C gh-pages remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          fi
+
+          namespace_root="gh-pages/${SITE_KEY}"
+          runs_root="${namespace_root}/runs"
+          latest_dir="${namespace_root}/latest"
+          current_run_dir="${runs_root}/${GITHUB_RUN_ID}"
+
+          mkdir -p "${runs_root}"
+          rm -rf "${current_run_dir}" "${latest_dir}"
+          mkdir -p "${current_run_dir}" "${latest_dir}"
+
+          cp -a incoming_site/. "${current_run_dir}/"
+          cp -a incoming_site/. "${latest_dir}/"
+
+          python - <<'PY'
+          from pathlib import Path
+          import os
+          import shutil
+
+          site_key = os.environ["SITE_KEY"]
+          run_id = os.environ["GITHUB_RUN_ID"]
+          namespace_root = Path("gh-pages") / site_key
+          runs_root = namespace_root / "runs"
+          runs_root.mkdir(parents=True, exist_ok=True)
+
+          run_dirs = [p for p in runs_root.iterdir() if p.is_dir()]
+          run_dirs.sort(key=lambda p: int(p.name) if p.name.isdigit() else -1, reverse=True)
+
+          for stale in run_dirs[5:]:
+              shutil.rmtree(stale)
+
+          repo_name = os.environ["GITHUB_REPOSITORY"].split("/")[-1]
+
+          root_index = [
+              "<!doctype html>",
+              '<html lang="en">',
+              "<head>",
+              '  <meta charset="utf-8">',
+              '  <meta name="viewport" content="width=device-width, initial-scale=1">',
+              f"  <title>{repo_name} - ASIC Flow Run Explorer</title>",
+              "</head>",
+              "<body>",
+              f"  <h1>{repo_name} - ASIC Flow Run Explorer</h1>",
+              f'  <p><a href="{site_key}/latest/">{site_key}/latest/</a></p>',
+              f'  <p><a href="{site_key}/runs/">{site_key}/runs/</a></p>',
+              "</body>",
+              "</html>",
+          ]
+
+          namespace_index = [
+              "<!doctype html>",
+              '<html lang="en">',
+              "<head>",
+              '  <meta charset="utf-8">',
+              '  <meta http-equiv="refresh" content="0; url=latest/">',
+              '  <meta name="viewport" content="width=device-width, initial-scale=1">',
+              f"  <title>{site_key} - ASIC Flow Run Explorer</title>",
+              "</head>",
+              "<body>",
+              f'  Redirecting to <a href="latest/">{site_key} latest explorer</a>...',
+              f'  <p>Per-run snapshots are available under <a href="runs/{run_id}/">runs/{run_id}/</a>.</p>',
+              "</body>",
+              "</html>",
+          ]
+
+          kept = [p.name for p in sorted(runs_root.iterdir(), key=lambda p: int(p.name) if p.name.isdigit() else -1, reverse=True) if p.is_dir()]
+          runs_lines = [
+              f"# {site_key} Run Snapshots",
+              "",
+              f"Latest run snapshot: [{run_id}]({run_id}/)",
+              "",
+              "Kept runs:",
+              "",
+          ] + [f"- [{name}]({name}/)" for name in kept]
+
+          Path("gh-pages/index.html").write_text("\n".join(root_index) + "\n", encoding="utf-8")
+          (namespace_root / "index.html").write_text("\n".join(namespace_index) + "\n", encoding="utf-8")
+          (runs_root / "index.html").write_text("\n".join(runs_lines) + "\n", encoding="utf-8")
+          PY
+      - name: Publish gh-pages branch
+        env:
+          SITE_KEY: ${{ needs.plan.outputs.site_key }}
+        run: |
+          set -euo pipefail
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No gh-pages changes to publish."
+          else
+            git commit -m "Publish explorer for ${SITE_KEY} run ${GITHUB_RUN_ID}"
+            git push origin HEAD:gh-pages
+          fi
+      - name: Workflow Summary
+        run: |
+          {
+            echo "## Published Run Explorer"
+            echo ""
+            echo "- [Open Latest Explorer](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ needs.plan.outputs.site_key }}/latest/)"
+          } >> "$GITHUB_STEP_SUMMARY"
