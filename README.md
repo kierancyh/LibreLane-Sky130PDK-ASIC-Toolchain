@@ -1,4 +1,4 @@
-# Variant-ASIC-Explorer
+# LibreLane Sky130PDK ASIC Toolchain
 
 A variant-driven GitHub ASIC flow and Run Explorer for **Sky130 + OpenLane2 / LibreLane**.
 
@@ -8,7 +8,7 @@ This repository is built for **you to upload a verilog(.v) design and the CI flo
 
 ## What Is This?
 
-`Variant-ASIC-Explorer` is a GitHub-based workflow for running ASIC experiments in a clean, repeatable way, built around **named design variants**.
+`LibreLane Sky130PDK ASIC Toolchain` is a GitHub-based workflow for running ASIC experiments in a clean, repeatable way, built around **named design variants**.
 
 Each design lives in its own folder under `designs/<variant_name>/`, has its own `variant.yaml`, and is selected through `manifest.yaml`.
 
@@ -54,8 +54,8 @@ That separation makes the prechecks cleaner and the backend flow much more trust
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/kierancyh/Variant-ASIC-Explorer.git
-cd Variant-ASIC-Explorer
+git clone https://github.com/kierancyh/LibreLane Sky130PDK ASIC Toolchain.git
+cd LibreLane Sky130PDK ASIC Toolchain
 ```
 
 ### 2. Create or Edit a Design Variant

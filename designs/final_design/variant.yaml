@@ -6,7 +6,7 @@ top_module: final_alu_runtime_top
 clock:
   port: clk
   mode: auto
-  max_ns_cap: 200
+  max_ns_cap: 100
 
 # ASIC RTL only. Do not put testbenches, console files, cocotb files,
 # generated netlists, VCDs, or local build outputs under src/.

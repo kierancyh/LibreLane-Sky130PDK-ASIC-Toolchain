@@ -6,7 +6,7 @@ top_module: rrns_top_crt
 clock:
   port: clk
   mode: auto
-  max_ns_cap: 200
+  max_ns_cap: 100
 
 sources:
   - src/rrns_cu.v

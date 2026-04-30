@@ -6,7 +6,7 @@ top_module: final_alu_top
 clock:
   port: clk
   mode: auto
-  max_ns_cap: 200
+  max_ns_cap: 100
 
 sources:
   - src/final_alu_cu.v
