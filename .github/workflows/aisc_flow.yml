@@ -878,6 +878,10 @@ jobs:
           SITE_KEY: ${{ needs.plan.outputs.site_key }}
         run: |
           set -euo pipefail
+
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
           if git show-ref --quiet refs/remotes/origin/gh-pages; then
             git worktree add gh-pages origin/gh-pages
           else
