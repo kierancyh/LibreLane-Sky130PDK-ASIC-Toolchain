@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASIC Flow Run Explorer</title>
+  <link rel="stylesheet" href="assets/explorer.css">
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-head">
+        <div class="hero-copy">
+          <h1>ASIC Flow Run Explorer</h1>
+          <p>Published summary of all collected runs, richer per-run metrics, and direct access to downloadable layout data.</p>
+          <p><strong>Workflow:</strong> Icarus RTL simulation → VCD waveform viewer on Surfer → Yosys structural pre-check → existing ASIC comparison.</p>
+          <p><strong>Snapshot run ID:</strong> 25192232505<br><strong>Repository:</strong> kierancyh/LibreLane-Sky130PDK-ASIC-Toolchain</p>
+          <ul class="settings-list"><li><strong>Synthesis strategy:</strong> Default</li><li><strong>Antenna repair:</strong> Enabled</li><li><strong>Heuristic diode insertion:</strong> Enabled</li><li><strong>Post-GRT design repair:</strong> Enabled</li><li><strong>Post-GRT resizer timing:</strong> Disabled</li></ul>
+        </div>
+        
+<div class="theme-control">
+  <button class="theme-launch" id="indexAppearanceButton" type="button" aria-expanded="false" aria-controls="indexThemeWidget">Appearance ⚙️</button>
+  <div class="theme-widget" id="indexThemeWidget" hidden>
+    <div class="theme-widget-body">
+      <h3>Appearance</h3>
+      <div class="theme-row"><label for="indexThemeWidget_preset">Theme preset</label><select id="indexThemeWidget_preset"><option value="canvas">Canvas Beige</option><option value="forest">Forest</option><option value="slate">Slate</option></select></div>
+      <div class="theme-inline">
+        <div class="theme-row"><label for="indexThemeWidget_bg">Base background</label><input type="color" id="indexThemeWidget_bg" value="#f4ecdf"></div>
+        <div class="theme-row"><label for="indexThemeWidget_accent">Accent</label><input type="color" id="indexThemeWidget_accent" value="#8b5e3c"></div>
+      </div>
+      <div class="theme-inline">
+        <div class="theme-row"><label for="indexThemeWidget_grad1">Gradient 1</label><input type="color" id="indexThemeWidget_grad1" value="#f8f1e7"></div>
+        <div class="theme-row"><label for="indexThemeWidget_grad2">Gradient 2</label><input type="color" id="indexThemeWidget_grad2" value="#efe4d3"></div>
+      </div>
+      <div class="theme-btn-row"><button id="indexThemeWidget_save" type="button">Save</button><button id="indexThemeWidget_reset" type="button">Reset</button></div>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card span-5">
+        <h2>Selection Criteria</h2>
+        <ol>
+          <li>Only SIGNOFF_PASS can be selected as the true best clock.</li>
+          <li>SIGNOFF_PASS requires worst-corner setup/hold closure, zero setup/hold violations, zero slew/cap violations, and clean DRC/LVS/antenna.</li>
+          <li>If no SIGNOFF_PASS exists, the explorer shows the least-bad completed run for inspection only.</li>
+          <li>Among comparable runs, lower requested clock period is preferred, then timing margins are used as tie-breakers.</li>
+        </ol>
+      </section>
+
+      <section class="card span-7"><h2>Best Run</h2><p><strong>Run:</strong> designs_final_design / clk_16p875ns_attempt_01</p><p><strong>Clock:</strong> 16.875 ns</p><p><strong>Status:</strong> <span class="badge pass">SIGNOFF_PASS</span></p><p><strong>Remarks:</strong> Worst-corner timing and signoff checks passed.</p></section>
+
+      <section class="card span-12">
+        <h2>Waveform Viewer</h2>
+        <div class="actions"><a class="btn" href="https://app.surfer-project.org/?load_url=https%3A%2F%2Fkierancyh.github.io%2FLibreLane-Sky130PDK-ASIC-Toolchain%2Ffinal_design%2Fruns%2F25192232505%2Fprecheck%2Frtl%2Ffinal_alu_runtime_rtl.vcd" target="_blank" rel="noopener noreferrer">Surfer Waveform Viewer</a><a class="btn secondary" href="precheck/rtl/final_alu_runtime_rtl.vcd">Download VCD</a><a class="btn secondary" href="precheck/rtl/run.log">Open Run Log</a><a class="btn secondary" href="precheck/yosys/yosys.log">Yosys Log</a><a class="btn secondary" href="precheck/yosys/stat.txt">Yosys Statistics</a><a class="btn secondary" href="precheck/yosys/final_alu_runtime_top_synth.v">Download Synthesized Netlist</a></div>
+        <div class="waveform-embed" style="margin-top:16px;"><iframe src="https://app.surfer-project.org/?load_url=https%3A%2F%2Fkierancyh.github.io%2FLibreLane-Sky130PDK-ASIC-Toolchain%2Ffinal_design%2Fruns%2F25192232505%2Fprecheck%2Frtl%2Ffinal_alu_runtime_rtl.vcd" title="Embedded waveform viewer" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      </section>
+
+      <section class="card span-12">
+        <h2>Run Overview</h2>
+        <div class="kpi-grid">
+          <div class="stat"><div class="label">Total runs</div><div class="value">17</div></div>
+          <div class="stat"><div class="label">SIGNOFF_PASS runs</div><div class="value">7</div></div>
+          <div class="stat"><div class="label">Non-pass runs</div><div class="value">10</div></div>
+          <div class="stat"><div class="label">Best clock</div><div class="value">16.875</div></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="card table-card section-gap-lg">
+      <div class="table-head"><h2>Run Comparison Table</h2><span>Top row is the selected best run</span></div>
+      <div class="table-tools">
+        <label>Status
+          <select id="statusFilter">
+            <option value="">All</option>
+            <option value="SIGNOFF_PASS">SIGNOFF_PASS</option>
+            <option value="FLOW_COMPLETED_TIMING_FAIL">FLOW_COMPLETED_TIMING_FAIL</option>
+            <option value="FLOW_COMPLETED_ELECTRICAL_FAIL">FLOW_COMPLETED_ELECTRICAL_FAIL</option>
+            <option value="FLOW_COMPLETED_SIGNOFF_FAIL">FLOW_COMPLETED_SIGNOFF_FAIL</option>
+            <option value="FLOW_COMPLETED_TIMING_AND_SIGNOFF_FAIL">FLOW_COMPLETED_TIMING_AND_SIGNOFF_FAIL</option>
+            <option value="METRICS_MISSING">METRICS_MISSING</option>
+            <option value="FLOW_FAIL">FLOW_FAIL</option>
+          </select>
+        </label>
+        <label>Stage
+          <select id="stageFilter">
+            <option value="">All</option>
+            <option value="coarse">Coarse</option><option value="mid">Mid</option><option value="refine-1">Refine-1</option><option value="refine-2">Refine-2</option><option value="refine-3">Refine-3</option>
+          </select>
+        </label>
+        <label>Search
+          <input id="searchFilter" type="search" placeholder="Run, remarks, status...">
+        </label>
+        <label class="inline-check">
+          <input type="checkbox" id="pinSelected" checked>
+          Keep selected run on top
+        </label>
+        <div class="summary" id="visibleRowsSummary"></div>
+      </div>
+      <div class="table-wrap">
+        <table class="wide-table">
+          <thead>
+            <tr>
+            <th><button class="sort-btn" data-key="run" data-type="text" aria-sort="none">Run <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-btn" data-key="clock" data-type="number" aria-sort="none">Clock (ns) <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-btn" data-key="setup_wns" data-type="number" aria-sort="none">Setup WNS (ns) <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-btn" data-key="setup_tns" data-type="number" aria-sort="none">Setup TNS (ns) <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-btn" data-key="core_area" data-type="number" aria-sort="none">Core Area (μm²) <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-btn" data-key="power_total" data-type="number" aria-sort="none">Total Power (W) <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-btn" data-key="drc" data-type="number" aria-sort="none">DRC <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-btn" data-key="lvs" data-type="number" aria-sort="none">LVS <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-btn" data-key="antenna" data-type="number" aria-sort="none">Antenna <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-btn" data-key="ir_drop" data-type="number" aria-sort="none">IR Drop (V) <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-btn" data-key="status" data-type="status" aria-sort="none">Status <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-btn" data-key="remarks" data-type="text" aria-sort="none">Remarks <span class="sort-indicator">↕</span></button></th>
+            <th>GDS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="best-row"
+                data-run="designs_final_design / clk_16p875ns_attempt_01"
+                data-clock="16.875"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.0053985691629350185"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="0.0"
+                data-ir_drop="0.000371"
+                data-status="SIGNOFF_PASS"
+                data-stage="refine-3"
+                data-remarks="Worst-corner timing and signoff checks passed."
+                data-selected="1">
+              <td data-sort="designs_final_design / clk_16p875ns_attempt_01">
+                <a href="runs/designs_final_design-clk_16p875ns_attempt_01/index.html">
+                  designs_final_design / clk_16p875ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="16.875">16.875</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.0053985691629350185">0.005399</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0.000371">0.000371</td>
+              <td><span class="badge pass">SIGNOFF_PASS</span></td>
+              <td>Worst-corner timing and signoff checks passed.</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_16p875ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_17ns_attempt_01"
+                data-clock="17.0"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.0054298751056194305"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="0.0"
+                data-ir_drop="0.000438"
+                data-status="SIGNOFF_PASS"
+                data-stage="refine-1"
+                data-remarks="Worst-corner timing and signoff checks passed."
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_17ns_attempt_01">
+                <a href="runs/designs_final_design-clk_17ns_attempt_01/index.html">
+                  designs_final_design / clk_17ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="17.0">17.0</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.0054298751056194305">0.005430</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0.000438">0.000438</td>
+              <td><span class="badge pass">SIGNOFF_PASS</span></td>
+              <td>Worst-corner timing and signoff checks passed.</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_17ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_18ns_attempt_01"
+                data-clock="18.0"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.0050861164927482605"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="0.0"
+                data-ir_drop="0.000453"
+                data-status="SIGNOFF_PASS"
+                data-stage="refine-1"
+                data-remarks="Worst-corner timing and signoff checks passed."
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_18ns_attempt_01">
+                <a href="runs/designs_final_design-clk_18ns_attempt_01/index.html">
+                  designs_final_design / clk_18ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="18.0">18.0</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.0050861164927482605">0.005086</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0.000453">0.000453</td>
+              <td><span class="badge pass">SIGNOFF_PASS</span></td>
+              <td>Worst-corner timing and signoff checks passed.</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_18ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_20ns_attempt_01"
+                data-clock="20.0"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.004570822697132826"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="0.0"
+                data-ir_drop="0.000372"
+                data-status="SIGNOFF_PASS"
+                data-stage="coarse"
+                data-remarks="Worst-corner timing and signoff checks passed."
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_20ns_attempt_01">
+                <a href="runs/designs_final_design-clk_20ns_attempt_01/index.html">
+                  designs_final_design / clk_20ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="20.0">20.0</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.004570822697132826">0.004571</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0.000372">0.000372</td>
+              <td><span class="badge pass">SIGNOFF_PASS</span></td>
+              <td>Worst-corner timing and signoff checks passed.</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_20ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_60ns_attempt_01"
+                data-clock="60.0"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.001524228136986494"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="0.0"
+                data-ir_drop="0.000123"
+                data-status="SIGNOFF_PASS"
+                data-stage="coarse"
+                data-remarks="Worst-corner timing and signoff checks passed."
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_60ns_attempt_01">
+                <a href="runs/designs_final_design-clk_60ns_attempt_01/index.html">
+                  designs_final_design / clk_60ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="60.0">60.0</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.001524228136986494">0.001524</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0.000123">0.000123</td>
+              <td><span class="badge pass">SIGNOFF_PASS</span></td>
+              <td>Worst-corner timing and signoff checks passed.</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_60ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_80ns_attempt_01"
+                data-clock="80.0"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.0011587860062718391"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="0.0"
+                data-ir_drop="0.00011"
+                data-status="SIGNOFF_PASS"
+                data-stage="coarse"
+                data-remarks="Worst-corner timing and signoff checks passed."
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_80ns_attempt_01">
+                <a href="runs/designs_final_design-clk_80ns_attempt_01/index.html">
+                  designs_final_design / clk_80ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="80.0">80.0</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.0011587860062718391">0.001159</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0.00011">0.00011</td>
+              <td><span class="badge pass">SIGNOFF_PASS</span></td>
+              <td>Worst-corner timing and signoff checks passed.</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_80ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_100ns_attempt_01"
+                data-clock="100.0"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.000911038659978658"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="0.0"
+                data-ir_drop="7.76e-05"
+                data-status="SIGNOFF_PASS"
+                data-stage="coarse"
+                data-remarks="Worst-corner timing and signoff checks passed."
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_100ns_attempt_01">
+                <a href="runs/designs_final_design-clk_100ns_attempt_01/index.html">
+                  designs_final_design / clk_100ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="100.0">100.0</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.000911038659978658">0.000911</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="7.76e-05">7.76e-05</td>
+              <td><span class="badge pass">SIGNOFF_PASS</span></td>
+              <td>Worst-corner timing and signoff checks passed.</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_100ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_16p625ns_attempt_01"
+                data-clock="16.625"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.005526878871023655"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="1.0"
+                data-ir_drop="0.000457"
+                data-status="FLOW_COMPLETED_ELECTRICAL_FAIL"
+                data-stage="refine-3"
+                data-remarks="max slew violations=1; max cap violations=1; DRC=0; LVS=0; Antenna=1"
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_16p625ns_attempt_01">
+                <a href="runs/designs_final_design-clk_16p625ns_attempt_01/index.html">
+                  designs_final_design / clk_16p625ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="16.625">16.625</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.005526878871023655">0.005527</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="1">1</td>
+              <td data-sort="0.000457">0.000457</td>
+              <td><span class="badge signoff">FLOW_COMPLETED_ELECTRICAL_FAIL</span></td>
+              <td>max slew violations=1; max cap violations=1; DRC=0; LVS=0; Antenna=1</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_16p625ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_16ns_attempt_01"
+                data-clock="16.0"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.005738628096878529"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="2.0"
+                data-ir_drop="0.000531"
+                data-status="FLOW_COMPLETED_SIGNOFF_FAIL"
+                data-stage="refine-1"
+                data-remarks="DRC=0; LVS=0; Antenna=2"
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_16ns_attempt_01">
+                <a href="runs/designs_final_design-clk_16ns_attempt_01/index.html">
+                  designs_final_design / clk_16ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="16.0">16.0</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.005738628096878529">0.005739</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="2">2</td>
+              <td data-sort="0.000531">0.000531</td>
+              <td><span class="badge signoff">FLOW_COMPLETED_SIGNOFF_FAIL</span></td>
+              <td>DRC=0; LVS=0; Antenna=2</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_16ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_16p5ns_attempt_01"
+                data-clock="16.5"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.005637266673147678"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="1.0"
+                data-ir_drop="0.000408"
+                data-status="FLOW_COMPLETED_SIGNOFF_FAIL"
+                data-stage="refine-2"
+                data-remarks="DRC=0; LVS=0; Antenna=1"
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_16p5ns_attempt_01">
+                <a href="runs/designs_final_design-clk_16p5ns_attempt_01/index.html">
+                  designs_final_design / clk_16p5ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="16.5">16.5</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.005637266673147678">0.005637</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="1">1</td>
+              <td data-sort="0.000408">0.000408</td>
+              <td><span class="badge signoff">FLOW_COMPLETED_SIGNOFF_FAIL</span></td>
+              <td>DRC=0; LVS=0; Antenna=1</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_16p5ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_16p75ns_attempt_01"
+                data-clock="16.75"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.00547562912106514"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="2.0"
+                data-ir_drop="0.000444"
+                data-status="FLOW_COMPLETED_SIGNOFF_FAIL"
+                data-stage="refine-3"
+                data-remarks="DRC=0; LVS=0; Antenna=2"
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_16p75ns_attempt_01">
+                <a href="runs/designs_final_design-clk_16p75ns_attempt_01/index.html">
+                  designs_final_design / clk_16p75ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="16.75">16.75</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.00547562912106514">0.005476</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="2">2</td>
+              <td data-sort="0.000444">0.000444</td>
+              <td><span class="badge signoff">FLOW_COMPLETED_SIGNOFF_FAIL</span></td>
+              <td>DRC=0; LVS=0; Antenna=2</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_16p75ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_19ns_attempt_01"
+                data-clock="19.0"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.0047491262666881084"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="3.0"
+                data-ir_drop="0.000381"
+                data-status="FLOW_COMPLETED_SIGNOFF_FAIL"
+                data-stage="refine-1"
+                data-remarks="DRC=0; LVS=0; Antenna=3"
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_19ns_attempt_01">
+                <a href="runs/designs_final_design-clk_19ns_attempt_01/index.html">
+                  designs_final_design / clk_19ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="19.0">19.0</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.0047491262666881084">0.004749</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="3">3</td>
+              <td data-sort="0.000381">0.000381</td>
+              <td><span class="badge signoff">FLOW_COMPLETED_SIGNOFF_FAIL</span></td>
+              <td>DRC=0; LVS=0; Antenna=3</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_19ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_40ns_attempt_01"
+                data-clock="40.0"
+                data-setup_wns="0.0"
+                data-setup_tns="0.0"
+                data-core_area="155480.0"
+                data-power_total="0.0022868704982101917"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="2.0"
+                data-ir_drop="0.000196"
+                data-status="FLOW_COMPLETED_SIGNOFF_FAIL"
+                data-stage="coarse"
+                data-remarks="DRC=0; LVS=0; Antenna=2"
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_40ns_attempt_01">
+                <a href="runs/designs_final_design-clk_40ns_attempt_01/index.html">
+                  designs_final_design / clk_40ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="40.0">40.0</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="0.0">0.000000</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.0022868704982101917">0.002287</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="2">2</td>
+              <td data-sort="0.000196">0.000196</td>
+              <td><span class="badge signoff">FLOW_COMPLETED_SIGNOFF_FAIL</span></td>
+              <td>DRC=0; LVS=0; Antenna=2</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_40ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_10ns_attempt_01"
+                data-clock="10.0"
+                data-setup_wns="-3.8848054761530193"
+                data-setup_tns="-196.40309845491367"
+                data-core_area="155480.0"
+                data-power_total="0.009257589466869831"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="1.0"
+                data-ir_drop="0.00078"
+                data-status="FLOW_COMPLETED_TIMING_AND_SIGNOFF_FAIL"
+                data-stage="mid"
+                data-remarks="setup WNS=-3.8848054761530193, TNS=-196.40309845491367, vio=488; max slew violations=17; max cap violations=1; DRC=0; LVS=0; Antenna=1"
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_10ns_attempt_01">
+                <a href="runs/designs_final_design-clk_10ns_attempt_01/index.html">
+                  designs_final_design / clk_10ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="10.0">10.0</td>
+              <td data-sort="-3.8848054761530193">-3.884805</td>
+              <td data-sort="-196.40309845491367">-196.403098</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.009257589466869831">0.009258</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="1">1</td>
+              <td data-sort="0.00078">0.00078</td>
+              <td><span class="badge mixed">FLOW_COMPLETED_TIMING_AND_SIGNOFF_FAIL</span></td>
+              <td>setup WNS=-3.8848054761530193, TNS=-196.40309845491367, vio=488; max slew violations=17; max cap violations=1; DRC=0; LVS=0; Antenna=1</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_10ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_15ns_attempt_01"
+                data-clock="15.0"
+                data-setup_wns="-0.6567173657426687"
+                data-setup_tns="-12.841047699734402"
+                data-core_area="155480.0"
+                data-power_total="0.006130853667855263"
+                data-drc="0.0"
+                data-lvs="0.0"
+                data-antenna="1.0"
+                data-ir_drop="0.000559"
+                data-status="FLOW_COMPLETED_TIMING_AND_SIGNOFF_FAIL"
+                data-stage="mid"
+                data-remarks="setup WNS=-0.6567173657426687, TNS=-12.841047699734402, vio=107; DRC=0; LVS=0; Antenna=1"
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_15ns_attempt_01">
+                <a href="runs/designs_final_design-clk_15ns_attempt_01/index.html">
+                  designs_final_design / clk_15ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="15.0">15.0</td>
+              <td data-sort="-0.6567173657426687">-0.656717</td>
+              <td data-sort="-12.841047699734402">-12.841048</td>
+              <td data-sort="155480">155480</td>
+              <td data-sort="0.006130853667855263">0.006131</td>
+              <td data-sort="0">0</td>
+              <td data-sort="0">0</td>
+              <td data-sort="1">1</td>
+              <td data-sort="0.000559">0.000559</td>
+              <td><span class="badge mixed">FLOW_COMPLETED_TIMING_AND_SIGNOFF_FAIL</span></td>
+              <td>setup WNS=-0.6567173657426687, TNS=-12.841047699734402, vio=107; DRC=0; LVS=0; Antenna=1</td>
+              <td><div class="inline-actions"><a class="btn secondary btn-sm" href="https://gds-viewer.tinytapeout.com/" target="_blank" rel="noopener">Viewer</a><a class="btn secondary btn-sm" href="runs/designs_final_design-clk_15ns_attempt_01/artifact/final/gds/final_alu_runtime_top.gds">Download GDS</a></div></td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_0ns_attempt_01"
+                data-clock="0.0"
+                data-setup_wns=""
+                data-setup_tns=""
+                data-core_area=""
+                data-power_total=""
+                data-drc=""
+                data-lvs=""
+                data-antenna=""
+                data-ir_drop=""
+                data-status="METRICS_MISSING"
+                data-stage="coarse"
+                data-remarks="Final metrics incomplete; missing setup_wns_ns, setup_tns_ns, hold_wns_ns, hold_tns_ns, setup_vio_count, hold_vio_count...."
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_0ns_attempt_01">
+                <a href="runs/designs_final_design-clk_0ns_attempt_01/index.html">
+                  designs_final_design / clk_0ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="0.0">0.0</td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td><span class="badge flow">METRICS_MISSING</span></td>
+              <td>Final metrics incomplete; missing setup_wns_ns, setup_tns_ns, hold_wns_ns, hold_tns_ns, setup_vio_count, hold_vio_count....</td>
+              <td>—</td>
+            </tr>
+            
+            <tr class=""
+                data-run="designs_final_design / clk_5ns_attempt_01"
+                data-clock="5.0"
+                data-setup_wns=""
+                data-setup_tns=""
+                data-core_area=""
+                data-power_total=""
+                data-drc=""
+                data-lvs=""
+                data-antenna=""
+                data-ir_drop=""
+                data-status="METRICS_MISSING"
+                data-stage="mid"
+                data-remarks="Final metrics incomplete; missing setup_wns_ns, setup_tns_ns, hold_wns_ns, hold_tns_ns, setup_vio_count, hold_vio_count...."
+                data-selected="0">
+              <td data-sort="designs_final_design / clk_5ns_attempt_01">
+                <a href="runs/designs_final_design-clk_5ns_attempt_01/index.html">
+                  designs_final_design / clk_5ns_attempt_01
+                </a>
+              </td>
+              <td data-sort="5.0">5.0</td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td data-sort=""></td>
+              <td><span class="badge flow">METRICS_MISSING</span></td>
+              <td>Final metrics incomplete; missing setup_wns_ns, setup_tns_ns, hold_wns_ns, hold_tns_ns, setup_vio_count, hold_vio_count....</td>
+              <td>—</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+  
+<script>
+(function () {
+  const root = document.documentElement;
+  const button = document.getElementById("indexAppearanceButton");
+  const panel = document.getElementById("indexThemeWidget");
+  if (!root || !button || !panel) return;
+  document.body.appendChild(panel);
+  const presetTheme = document.getElementById("indexThemeWidget_preset");
+  const bgColor = document.getElementById("indexThemeWidget_bg");
+  const accentColor = document.getElementById("indexThemeWidget_accent");
+  const grad1 = document.getElementById("indexThemeWidget_grad1");
+  const grad2 = document.getElementById("indexThemeWidget_grad2");
+  const saveTheme = document.getElementById("indexThemeWidget_save");
+  const resetTheme = document.getElementById("indexThemeWidget_reset");
+  const presets = {
+    canvas: {"--bg":"#f4ecdf","--bg-grad-1":"#f8f1e7","--bg-grad-2":"#efe4d3","--accent":"#8b5e3c","--accent-2":"#b6845e"},
+    forest: {"--bg":"#e9efe7","--bg-grad-1":"#f3f7f1","--bg-grad-2":"#d9e7d5","--accent":"#4f7a5c","--accent-2":"#789d83"},
+    slate: {"--bg":"#e7ebf0","--bg-grad-1":"#f3f6fa","--bg-grad-2":"#d7dde6","--accent":"#496a8a","--accent-2":"#7292b0"}
+  };
+  function applyVars(vars) { Object.entries(vars).forEach(([k,v]) => root.style.setProperty(k, v)); }
+  function syncInputsFromCurrentTheme() {
+    const styles = getComputedStyle(root);
+    bgColor.value = styles.getPropertyValue("--bg").trim() || bgColor.value;
+    grad1.value = styles.getPropertyValue("--bg-grad-1").trim() || grad1.value;
+    grad2.value = styles.getPropertyValue("--bg-grad-2").trim() || grad2.value;
+    accentColor.value = styles.getPropertyValue("--accent").trim() || accentColor.value;
+  }
+  function saveSettings() { localStorage.setItem("asic-flow-theme", JSON.stringify({preset:presetTheme.value,bg:bgColor.value,grad1:grad1.value,grad2:grad2.value,accent:accentColor.value})); }
+  function loadSettings() {
+    const raw = localStorage.getItem("asic-flow-theme");
+    if (!raw) {
+      presetTheme.value = "canvas";
+      applyVars(presets.canvas);
+      syncInputsFromCurrentTheme();
+      return;
+    }
+    try {
+      const s = JSON.parse(raw);
+      const preset = (s.preset && presets[s.preset]) ? s.preset : "canvas";
+      presetTheme.value = preset;
+      applyVars(presets[preset]);
+      if (s.bg) bgColor.value = s.bg;
+      if (s.grad1) grad1.value = s.grad1;
+      if (s.grad2) grad2.value = s.grad2;
+      if (s.accent) accentColor.value = s.accent;
+      applyVars({"--bg":bgColor.value,"--bg-grad-1":grad1.value,"--bg-grad-2":grad2.value,"--accent":accentColor.value,"--accent-2":accentColor.value});
+    } catch (e) {
+      presetTheme.value = "canvas";
+      applyVars(presets.canvas);
+    }
+    syncInputsFromCurrentTheme();
+  }
+  function positionPanel() {
+    if (panel.hidden) return;
+    const rect = button.getBoundingClientRect();
+    const vw = window.innerWidth || document.documentElement.clientWidth || 0;
+    const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+    const margin = 12;
+    const w = Math.min(340, Math.max(260, vw - (margin * 2)));
+    panel.style.width = w + "px";
+    panel.style.maxWidth = w + "px";
+    const h = panel.offsetHeight || 320;
+    let left = rect.right - w;
+    left = Math.max(margin, Math.min(left, vw - w - margin));
+    let top = rect.bottom + 12;
+    if (top + h > vh - margin) top = Math.max(margin, rect.top - h - 12);
+    panel.style.left = left + "px";
+    panel.style.top = top + "px";
+  }
+  function openPanel() { panel.hidden = false; button.setAttribute("aria-expanded", "true"); positionPanel(); }
+  function closePanel() { panel.hidden = true; button.setAttribute("aria-expanded", "false"); }
+  button.addEventListener("click", function (e) { e.stopPropagation(); if (panel.hidden) openPanel(); else closePanel(); });
+  panel.addEventListener("click", function (e) { e.stopPropagation(); });
+  document.addEventListener("click", function () { closePanel(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closePanel(); });
+  window.addEventListener("resize", function () { if (!panel.hidden) positionPanel(); });
+  window.addEventListener("scroll", function () { if (!panel.hidden) positionPanel(); }, true);
+  presetTheme.addEventListener("change", function () {
+    if (presets[presetTheme.value]) {
+      applyVars(presets[presetTheme.value]);
+      syncInputsFromCurrentTheme();
+      saveSettings();
+    }
+  });
+  [bgColor, grad1, grad2, accentColor].forEach(el => el.addEventListener("input", function () {
+    applyVars({"--bg":bgColor.value,"--bg-grad-1":grad1.value,"--bg-grad-2":grad2.value,"--accent":accentColor.value,"--accent-2":accentColor.value});
+    saveSettings();
+  }));
+  saveTheme.addEventListener("click", saveSettings);
+  resetTheme.addEventListener("click", function () {
+    localStorage.removeItem("asic-flow-theme");
+    presetTheme.value = "canvas";
+    applyVars(presets.canvas);
+    syncInputsFromCurrentTheme();
+    closePanel();
+  });
+  loadSettings();
+  closePanel();
+})();
+</script>
+
+  
+<script>
+(function () {
+  const table = document.querySelector(".wide-table");
+  if (!table) return;
+  const tbody = table.querySelector("tbody");
+  const headerButtons = Array.from(document.querySelectorAll(".sort-btn"));
+  const statusFilter = document.getElementById("statusFilter");
+  const stageFilter = document.getElementById("stageFilter");
+  const searchFilter = document.getElementById("searchFilter");
+  const pinSelected = document.getElementById("pinSelected");
+  const visibleSummary = document.getElementById("visibleRowsSummary");
+  const allRows = Array.from(tbody.querySelectorAll("tr"));
+  let currentKey = "";
+  let currentDir = "asc";
+  const statusRank = {"SIGNOFF_PASS": 0, "FLOW_COMPLETED_ELECTRICAL_FAIL": 1, "FLOW_COMPLETED_SIGNOFF_FAIL": 2, "FLOW_COMPLETED_TIMING_FAIL": 3, "FLOW_COMPLETED_TIMING_AND_SIGNOFF_FAIL": 4, "METRICS_MISSING": 5, "FLOW_FAIL": 6};
+  function getRowValue(row, key, type) {
+    const raw = (row.dataset[key] || "").trim();
+    if (type === "number") {
+      if (raw === "") return Number.POSITIVE_INFINITY;
+      const parsed = Number(raw);
+      return Number.isFinite(parsed) ? parsed : Number.POSITIVE_INFINITY;
+    }
+    if (type === "status") {
+      return Object.prototype.hasOwnProperty.call(statusRank, raw) ? statusRank[raw] : 999;
+    }
+    return raw.toLowerCase();
+  }
+  function updateHeaderState() {
+    headerButtons.forEach((btn) => {
+      const indicator = btn.querySelector(".sort-indicator");
+      const isActive = btn.dataset.key === currentKey;
+      btn.classList.toggle("active", isActive);
+      btn.setAttribute("aria-sort", isActive ? (currentDir === "asc" ? "ascending" : "descending") : "none");
+      if (indicator) indicator.textContent = isActive ? (currentDir === "asc" ? "▲" : "▼") : "↕";
+    });
+  }
+  function applyFilters(rows) {
+    const wantedStatus = statusFilter && statusFilter.value ? statusFilter.value : "";
+    const wantedStage = stageFilter && stageFilter.value ? stageFilter.value : "";
+    const term = searchFilter && searchFilter.value ? searchFilter.value.trim().toLowerCase() : "";
+    return rows.filter((row) => {
+      const statusOk = !wantedStatus || (row.dataset.status || "") === wantedStatus;
+      const stageOk = !wantedStage || (row.dataset.stage || "") === wantedStage;
+      const haystack = [row.dataset.run || "", row.dataset.status || "", row.dataset.stage || "", row.dataset.remarks || ""].join(" ").toLowerCase();
+      const searchOk = !term || haystack.includes(term);
+      return statusOk && stageOk && searchOk;
+    });
+  }
+  function render() {
+    let rows = applyFilters(allRows.slice());
+    if (currentKey) {
+      const activeBtn = headerButtons.find((btn) => btn.dataset.key === currentKey);
+      const type = activeBtn ? (activeBtn.dataset.type || "text") : "text";
+      rows.sort((a, b) => {
+        const av = getRowValue(a, currentKey, type);
+        const bv = getRowValue(b, currentKey, type);
+        if (av < bv) return currentDir === "asc" ? -1 : 1;
+        if (av > bv) return currentDir === "asc" ? 1 : -1;
+        return 0;
+      });
+    }
+    if (pinSelected && pinSelected.checked) {
+      rows.sort((a, b) => Number(b.dataset.selected || "0") - Number(a.dataset.selected || "0"));
+    }
+    tbody.innerHTML = "";
+    rows.forEach((row) => tbody.appendChild(row));
+    if (visibleSummary) visibleSummary.textContent = "Showing " + rows.length + " of " + allRows.length + " runs";
+    updateHeaderState();
+  }
+  headerButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const key = btn.dataset.key || "";
+      if (!key) return;
+      if (currentKey === key) currentDir = currentDir === "asc" ? "desc" : "asc";
+      else { currentKey = key; currentDir = "asc"; }
+      render();
+    });
+  });
+  [statusFilter, stageFilter, searchFilter, pinSelected].forEach((el) => {
+    if (!el) return;
+    el.addEventListener("input", render);
+    el.addEventListener("change", render);
+  });
+  render();
+})();
+</script>
+
+</body>
+</html>

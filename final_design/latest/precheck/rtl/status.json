@@ -1,0 +1,17 @@
+{
+  "tool": "icarus",
+  "enabled": true,
+  "status": "PASS",
+  "passed": true,
+  "compile_pass": true,
+  "compile_rc": 0,
+  "run_pass": true,
+  "run_rc": 0,
+  "vcd_present": true,
+  "vcd_name": "final_alu_runtime_rtl.vcd",
+  "variant_path": "designs/final_design",
+  "safe_variant": "designs_final_design",
+  "top_module": "final_alu_runtime_top",
+  "testbench_top": "tb_final_alu_runtime_top",
+  "reason": "ok"
+}

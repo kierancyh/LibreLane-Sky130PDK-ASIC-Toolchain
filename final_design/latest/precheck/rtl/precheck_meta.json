@@ -1,0 +1,33 @@
+{
+  "variant_path": "designs/final_design",
+  "safe_variant": "designs_final_design",
+  "top_module": "final_alu_runtime_top",
+  "testbench_top": "tb_final_alu_runtime_top",
+  "rtl_sources": [
+    "designs/final_design/src/final_alu_cfg_checker.v",
+    "designs/final_design/src/final_alu_cfg_precompute.v",
+    "designs/final_design/src/final_alu_cfg_regs.v",
+    "designs/final_design/src/final_alu_checker_reencode.v",
+    "designs/final_design/src/final_alu_corrector_search.v",
+    "designs/final_design/src/final_alu_encoder_runtime.v",
+    "designs/final_design/src/final_alu_modinv_core.v",
+    "designs/final_design/src/final_alu_op_range_guard.v",
+    "designs/final_design/src/final_alu_range_check.v",
+    "designs/final_design/src/final_alu_recon_garner.v",
+    "designs/final_design/src/final_alu_runtime_cu.v",
+    "designs/final_design/src/final_alu_runtime_top.v",
+    "designs/final_design/src/final_alu_slice_runtime.v",
+    "designs/final_design/src/final_alu_subset_rom.v"
+  ],
+  "testbench_sources": [
+    "designs/final_design/tb/tb_final_alu_runtime_top.v"
+  ],
+  "vcd_name": "final_alu_runtime_rtl.vcd",
+  "tool": "icarus",
+  "enabled": true,
+  "compile_cmd": "iverilog -g2012 -o precheck/rtl/simv -s tb_final_alu_runtime_top -I /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src -I /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/tb /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_cfg_checker.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_cfg_precompute.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_cfg_regs.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_checker_reencode.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_corrector_search.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_encoder_runtime.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_modinv_core.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_op_range_guard.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_range_check.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_recon_garner.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_runtime_cu.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_runtime_top.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_slice_runtime.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/src/final_alu_subset_rom.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/tb/tb_final_alu_runtime_top.v",
+  "run_cmd": "vvp simv",
+  "compile_log": "precheck/rtl/compile.log",
+  "run_log": "precheck/rtl/run.log",
+  "vcd_path": "precheck/rtl/final_alu_runtime_rtl.vcd"
+}

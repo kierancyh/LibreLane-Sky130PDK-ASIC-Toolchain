@@ -1,0 +1,10 @@
+{
+  "variant": "designs_final_design",
+  "clock_ns_requested": 60.0,
+  "github_run_id": "25192232505",
+  "github_run_number": "5",
+  "commit_sha": "b0efd3118cef5cf0d60cf09c4f1bf188fe5ad6f8",
+  "synth_strategy_override": "",
+  "stage_label": "coarse",
+  "artifact_name": "coarse-designs_final_design-60ns-r25192232505"
+}
