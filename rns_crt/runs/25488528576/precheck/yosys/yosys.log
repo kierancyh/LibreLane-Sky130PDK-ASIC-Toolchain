@@ -1,0 +1,2067 @@
+Yosys precheck source closure report
+Top module: rns_top_crt
+All resolved RTL sources: 5
+Reachable closure sources: 5
+
+Reachable modules:
+  - rns_top_crt
+  - rns_crt_recon
+  - rns_cu
+  - rns_encoder
+  - rns_slice
+
+Reachable closure source files:
+  - designs/rns_crt/src/rns_crt_recon.v
+  - designs/rns_crt/src/rns_cu.v
+  - designs/rns_crt/src/rns_encoder.v
+  - designs/rns_crt/src/rns_slice.v
+  - designs/rns_crt/src/rns_top_crt.v
+
+Reachable dependency map:
+  - rns_top_crt: rns_crt_recon, rns_cu, rns_encoder, rns_slice
+  - rns_crt_recon: (leaf)
+  - rns_cu: (leaf)
+  - rns_encoder: (leaf)
+  - rns_slice: (leaf)
+
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Executing script file `run.ys' --
+
+1. Executing Verilog-2005 frontend: /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v
+Parsing SystemVerilog input from `/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v' to AST representation.
+Storing AST representation for module `$abstract\rns_crt_recon'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v
+Parsing SystemVerilog input from `/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v' to AST representation.
+Storing AST representation for module `$abstract\rns_cu'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v
+Parsing SystemVerilog input from `/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v' to AST representation.
+Storing AST representation for module `$abstract\rns_encoder'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v
+Parsing SystemVerilog input from `/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v' to AST representation.
+Storing AST representation for module `$abstract\rns_slice'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v
+Parsing SystemVerilog input from `/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v' to AST representation.
+Storing AST representation for module `$abstract\rns_top_crt'.
+Successfully finished Verilog frontend.
+
+6. Executing HIERARCHY pass (managing design hierarchy).
+
+7. Executing AST frontend in derive mode using pre-parsed AST for module `\rns_top_crt'.
+Generating RTLIL representation for module `\rns_top_crt'.
+
+7.1. Analyzing design hierarchy..
+Top module:  \rns_top_crt
+Parameter \W0 = 2
+Parameter \W1 = 3
+Parameter \W2 = 3
+Parameter \W3 = 4
+Parameter \OUT_WIDTH = 16
+
+7.2. Executing AST frontend in derive mode using pre-parsed AST for module `\rns_crt_recon'.
+Parameter \W0 = 2
+Parameter \W1 = 3
+Parameter \W2 = 3
+Parameter \W3 = 4
+Parameter \OUT_WIDTH = 16
+Generating RTLIL representation for module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+Parameter \MODULUS = 11
+Parameter \WIDTH = 4
+
+7.3. Executing AST frontend in derive mode using pre-parsed AST for module `\rns_slice'.
+Parameter \MODULUS = 11
+Parameter \WIDTH = 4
+Generating RTLIL representation for module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+Parameter \MODULUS = 7
+Parameter \WIDTH = 3
+
+7.4. Executing AST frontend in derive mode using pre-parsed AST for module `\rns_slice'.
+Parameter \MODULUS = 7
+Parameter \WIDTH = 3
+Generating RTLIL representation for module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+Parameter \MODULUS = 5
+Parameter \WIDTH = 3
+
+7.5. Executing AST frontend in derive mode using pre-parsed AST for module `\rns_slice'.
+Parameter \MODULUS = 5
+Parameter \WIDTH = 3
+Generating RTLIL representation for module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+Parameter \MODULUS = 3
+Parameter \WIDTH = 2
+
+7.6. Executing AST frontend in derive mode using pre-parsed AST for module `\rns_slice'.
+Parameter \MODULUS = 3
+Parameter \WIDTH = 2
+Generating RTLIL representation for module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+Parameter \WIDTH_IN = 16
+Parameter \M0 = 3
+Parameter \M1 = 5
+Parameter \M2 = 7
+Parameter \M3 = 11
+Parameter \W0 = 2
+Parameter \W1 = 3
+Parameter \W2 = 3
+Parameter \W3 = 4
+
+7.7. Executing AST frontend in derive mode using pre-parsed AST for module `\rns_encoder'.
+Parameter \WIDTH_IN = 16
+Parameter \M0 = 3
+Parameter \M1 = 5
+Parameter \M2 = 7
+Parameter \M3 = 11
+Parameter \W0 = 2
+Parameter \W1 = 3
+Parameter \W2 = 3
+Parameter \W3 = 4
+Generating RTLIL representation for module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+Parameter \WIDTH_IN = 16
+Parameter \M0 = 3
+Parameter \M1 = 5
+Parameter \M2 = 7
+Parameter \M3 = 11
+Parameter \W0 = 2
+Parameter \W1 = 3
+Parameter \W2 = 3
+Parameter \W3 = 4
+Found cached RTLIL representation for module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+
+7.8. Executing AST frontend in derive mode using pre-parsed AST for module `\rns_cu'.
+Generating RTLIL representation for module `\rns_cu'.
+
+7.9. Analyzing design hierarchy..
+Top module:  \rns_top_crt
+Used module:     $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon
+Used module:     $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice
+Used module:     $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice
+Used module:     $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice
+Used module:     $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice
+Used module:     $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder
+Used module:     \rns_cu
+
+7.10. Analyzing design hierarchy..
+Top module:  \rns_top_crt
+Used module:     $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon
+Used module:     $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice
+Used module:     $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice
+Used module:     $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice
+Used module:     $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice
+Used module:     $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder
+Used module:     \rns_cu
+Removing unused module `$abstract\rns_top_crt'.
+Removing unused module `$abstract\rns_slice'.
+Removing unused module `$abstract\rns_encoder'.
+Removing unused module `$abstract\rns_cu'.
+Removing unused module `$abstract\rns_crt_recon'.
+Removed 5 unused modules.
+
+8. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice...
+Checking module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon...
+Checking module rns_top_crt...
+Checking module rns_cu...
+Checking module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder...
+Checking module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice...
+Checking module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice...
+Checking module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice...
+Found and reported 0 problems.
+
+9. Executing PROC pass (convert processes to netlists).
+
+9.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+9.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$69 in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+Marked 1 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$61 in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+Marked 1 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:77$59 in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Marked 5 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12 in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Marked 2 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:84$113 in module rns_cu.
+Marked 6 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:68$111 in module rns_cu.
+Marked 1 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:57$107 in module rns_cu.
+Marked 1 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:50$105 in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+Marked 1 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$99 in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+Marked 1 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$91 in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+Marked 1 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$89 in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+Marked 1 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$81 in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+Marked 1 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$79 in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+Marked 1 switch rules as full_case in process $proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$71 in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+Removed a total of 0 dead cases.
+
+9.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 12 redundant assignments.
+Promoted 42 assignments to connections.
+
+9.4. Executing PROC_INIT pass (extract init attributes).
+
+9.5. Executing PROC_ARST pass (detect async resets in processes).
+
+9.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~32 debug messages>
+
+9.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$69'.
+     1/3: $0\ALU_Done[0:0]
+     2/3: $0\start_d[0:0]
+     3/3: $0\y[3:0]
+Creating decoders for process `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$61'.
+     1/2: $1\y_next[3:0]
+     2/2: $1\tmp[31:0]
+Creating decoders for process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:77$59'.
+     1/3: $0\start_d[0:0]
+     2/3: $0\CRT_Done[0:0]
+     3/3: $0\X_out[15:0]
+Creating decoders for process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+     1/5: $1\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:72$11.t[31:0]$57
+     2/5: $1\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:64$10.t[31:0]$42
+     3/5: $1\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:63$9.t[31:0]$38
+     4/5: $1\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:62$8.t[31:0]$34
+     5/5: $1\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:61$7.t[31:0]$30
+Creating decoders for process `\rns_top_crt.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v:180$6'.
+     1/1: $0\X_reg[15:0]
+Creating decoders for process `\rns_top_crt.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v:48$1'.
+     1/3: $0\OpSel_reg[1:0]
+     2/3: $0\B_reg[15:0]
+     3/3: $0\A_reg[15:0]
+Creating decoders for process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:84$113'.
+     1/9: $2\CRT_Start[0:0]
+     2/9: $2\MRC_Start[0:0]
+     3/9: $1\Load_IN[0:0]
+     4/9: $1\Out_EN[0:0]
+     5/9: $1\MRC_Start[0:0]
+     6/9: $1\CRT_Start[0:0]
+     7/9: $1\ALU_EN[0:0]
+     8/9: $1\Encode_EN[0:0]
+     9/9: $1\Done[0:0]
+Creating decoders for process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:68$111'.
+     1/6: $6\next_state[2:0]
+     2/6: $5\next_state[2:0]
+     3/6: $4\next_state[2:0]
+     4/6: $3\next_state[2:0]
+     5/6: $2\next_state[2:0]
+     6/6: $1\next_state[2:0]
+Creating decoders for process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:57$107'.
+     1/1: $0\state[2:0]
+Creating decoders for process `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:50$105'.
+     1/5: $0\Encode_Done[0:0]
+     2/5: $0\r3[3:0]
+     3/5: $0\r2[2:0]
+     4/5: $0\r1[2:0]
+     5/5: $0\r0[1:0]
+Creating decoders for process `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$99'.
+     1/3: $0\ALU_Done[0:0]
+     2/3: $0\start_d[0:0]
+     3/3: $0\y[1:0]
+Creating decoders for process `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$91'.
+     1/2: $1\y_next[1:0]
+     2/2: $1\tmp[31:0]
+Creating decoders for process `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$89'.
+     1/3: $0\ALU_Done[0:0]
+     2/3: $0\start_d[0:0]
+     3/3: $0\y[2:0]
+Creating decoders for process `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$81'.
+     1/2: $1\y_next[2:0]
+     2/2: $1\tmp[31:0]
+Creating decoders for process `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$79'.
+     1/3: $0\ALU_Done[0:0]
+     2/3: $0\start_d[0:0]
+     3/3: $0\y[2:0]
+Creating decoders for process `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$71'.
+     1/2: $1\y_next[2:0]
+     2/2: $1\tmp[31:0]
+
+9.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.\y_next' from process `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$61'.
+No latch inferred for signal `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.\tmp' from process `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$61'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\x0_mod' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\x1_mod' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\x2_mod' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\x3_mod' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\term0' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\term1' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\term2' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\term3' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\total' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\total_mod' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\X_next' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:61$7.$result' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:61$7.x' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:61$7.t' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:62$8.$result' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:62$8.x' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:62$8.t' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:63$9.$result' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:63$9.x' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:63$9.t' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:64$10.$result' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:64$10.x' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:64$10.t' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:72$11.$result' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:72$11.x' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\norm_mod$func$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:72$11.t' from process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+No latch inferred for signal `\rns_cu.\Done' from process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:84$113'.
+No latch inferred for signal `\rns_cu.\Load_IN' from process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:84$113'.
+No latch inferred for signal `\rns_cu.\Encode_EN' from process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:84$113'.
+No latch inferred for signal `\rns_cu.\ALU_EN' from process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:84$113'.
+No latch inferred for signal `\rns_cu.\CRT_Start' from process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:84$113'.
+No latch inferred for signal `\rns_cu.\MRC_Start' from process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:84$113'.
+No latch inferred for signal `\rns_cu.\Out_EN' from process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:84$113'.
+No latch inferred for signal `\rns_cu.\next_state' from process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:68$111'.
+No latch inferred for signal `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.\y_next' from process `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$91'.
+No latch inferred for signal `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.\tmp' from process `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$91'.
+No latch inferred for signal `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.\y_next' from process `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$81'.
+No latch inferred for signal `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.\tmp' from process `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$81'.
+No latch inferred for signal `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.\y_next' from process `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$71'.
+No latch inferred for signal `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.\tmp' from process `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$71'.
+
+9.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.\ALU_Done' using process `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$69'.
+  created $dff cell `$procdff$369' with positive edge clock.
+Creating register for signal `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.\y' using process `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$69'.
+  created $dff cell `$procdff$370' with positive edge clock.
+Creating register for signal `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.\start_d' using process `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$69'.
+  created $dff cell `$procdff$371' with positive edge clock.
+Creating register for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\X_out' using process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:77$59'.
+  created $dff cell `$procdff$372' with positive edge clock.
+Creating register for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\CRT_Done' using process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:77$59'.
+  created $dff cell `$procdff$373' with positive edge clock.
+Creating register for signal `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.\start_d' using process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:77$59'.
+  created $dff cell `$procdff$374' with positive edge clock.
+Creating register for signal `\rns_top_crt.\X_reg' using process `\rns_top_crt.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v:180$6'.
+  created $dff cell `$procdff$375' with positive edge clock.
+Creating register for signal `\rns_top_crt.\A_reg' using process `\rns_top_crt.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v:48$1'.
+  created $dff cell `$procdff$376' with positive edge clock.
+Creating register for signal `\rns_top_crt.\B_reg' using process `\rns_top_crt.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v:48$1'.
+  created $dff cell `$procdff$377' with positive edge clock.
+Creating register for signal `\rns_top_crt.\OpSel_reg' using process `\rns_top_crt.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v:48$1'.
+  created $dff cell `$procdff$378' with positive edge clock.
+Creating register for signal `\rns_cu.\state' using process `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:57$107'.
+  created $dff cell `$procdff$379' with positive edge clock.
+Creating register for signal `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.\Encode_Done' using process `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:50$105'.
+  created $dff cell `$procdff$380' with positive edge clock.
+Creating register for signal `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.\r0' using process `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:50$105'.
+  created $dff cell `$procdff$381' with positive edge clock.
+Creating register for signal `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.\r1' using process `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:50$105'.
+  created $dff cell `$procdff$382' with positive edge clock.
+Creating register for signal `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.\r2' using process `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:50$105'.
+  created $dff cell `$procdff$383' with positive edge clock.
+Creating register for signal `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.\r3' using process `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:50$105'.
+  created $dff cell `$procdff$384' with positive edge clock.
+Creating register for signal `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.\ALU_Done' using process `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$99'.
+  created $dff cell `$procdff$385' with positive edge clock.
+Creating register for signal `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.\y' using process `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$99'.
+  created $dff cell `$procdff$386' with positive edge clock.
+Creating register for signal `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.\start_d' using process `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$99'.
+  created $dff cell `$procdff$387' with positive edge clock.
+Creating register for signal `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.\ALU_Done' using process `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$89'.
+  created $dff cell `$procdff$388' with positive edge clock.
+Creating register for signal `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.\y' using process `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$89'.
+  created $dff cell `$procdff$389' with positive edge clock.
+Creating register for signal `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.\start_d' using process `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$89'.
+  created $dff cell `$procdff$390' with positive edge clock.
+Creating register for signal `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.\ALU_Done' using process `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$79'.
+  created $dff cell `$procdff$391' with positive edge clock.
+Creating register for signal `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.\y' using process `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$79'.
+  created $dff cell `$procdff$392' with positive edge clock.
+Creating register for signal `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.\start_d' using process `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$79'.
+  created $dff cell `$procdff$393' with positive edge clock.
+
+9.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+9.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$69'.
+Removing empty process `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$69'.
+Found and cleaned up 1 empty switch in `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$61'.
+Removing empty process `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$61'.
+Found and cleaned up 2 empty switches in `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:77$59'.
+Removing empty process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:77$59'.
+Found and cleaned up 5 empty switches in `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+Removing empty process `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_crt_recon.v:60$12'.
+Found and cleaned up 1 empty switch in `\rns_top_crt.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v:180$6'.
+Removing empty process `rns_top_crt.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v:180$6'.
+Found and cleaned up 1 empty switch in `\rns_top_crt.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v:48$1'.
+Removing empty process `rns_top_crt.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_top_crt.v:48$1'.
+Found and cleaned up 2 empty switches in `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:84$113'.
+Removing empty process `rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:84$113'.
+Found and cleaned up 6 empty switches in `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:68$111'.
+Removing empty process `rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:68$111'.
+Found and cleaned up 1 empty switch in `\rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:57$107'.
+Removing empty process `rns_cu.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_cu.v:57$107'.
+Found and cleaned up 2 empty switches in `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:50$105'.
+Removing empty process `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:50$105'.
+Found and cleaned up 2 empty switches in `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$99'.
+Removing empty process `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$99'.
+Found and cleaned up 1 empty switch in `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$91'.
+Removing empty process `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$91'.
+Found and cleaned up 2 empty switches in `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$89'.
+Removing empty process `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$89'.
+Found and cleaned up 1 empty switch in `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$81'.
+Removing empty process `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$81'.
+Found and cleaned up 2 empty switches in `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$79'.
+Removing empty process `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:67$79'.
+Found and cleaned up 1 empty switch in `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$71'.
+Removing empty process `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.$proc$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_slice.v:38$71'.
+Cleaned up 32 empty switches.
+
+9.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+<suppressed ~5 debug messages>
+Optimizing module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+<suppressed ~3 debug messages>
+Optimizing module rns_top_crt.
+Optimizing module rns_cu.
+<suppressed ~9 debug messages>
+Optimizing module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+<suppressed ~5 debug messages>
+Optimizing module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+<suppressed ~5 debug messages>
+Optimizing module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+<suppressed ~5 debug messages>
+Optimizing module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+<suppressed ~5 debug messages>
+
+10. Executing OPT pass (performing simple optimizations).
+
+10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+Optimizing module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+<suppressed ~8 debug messages>
+Optimizing module rns_top_crt.
+Optimizing module rns_cu.
+Optimizing module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+Optimizing module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+Optimizing module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+Optimizing module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+
+10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+<suppressed ~9 debug messages>
+Finding identical cells in module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+Finding identical cells in module `\rns_top_crt'.
+Finding identical cells in module `\rns_cu'.
+<suppressed ~45 debug messages>
+Finding identical cells in module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+Finding identical cells in module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+<suppressed ~9 debug messages>
+Finding identical cells in module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+<suppressed ~9 debug messages>
+Finding identical cells in module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+<suppressed ~9 debug messages>
+Removed a total of 27 cells.
+
+10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/4 on $pmux $procmux$132.
+    dead port 2/4 on $pmux $procmux$132.
+    dead port 3/4 on $pmux $procmux$132.
+    dead port 4/4 on $pmux $procmux$132.
+Running muxtree optimizer on module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \rns_top_crt..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \rns_cu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$245.
+    dead port 2/2 on $mux $procmux$236.
+    dead port 2/2 on $mux $procmux$228.
+    dead port 2/2 on $mux $procmux$267.
+    dead port 2/2 on $mux $procmux$184.
+    dead port 2/2 on $mux $procmux$176.
+    dead port 2/2 on $mux $procmux$255.
+Running muxtree optimizer on module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/4 on $pmux $procmux$323.
+    dead port 2/4 on $pmux $procmux$323.
+    dead port 3/4 on $pmux $procmux$323.
+    dead port 4/4 on $pmux $procmux$323.
+Running muxtree optimizer on module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/4 on $pmux $procmux$344.
+    dead port 2/4 on $pmux $procmux$344.
+    dead port 3/4 on $pmux $procmux$344.
+    dead port 4/4 on $pmux $procmux$344.
+Running muxtree optimizer on module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/4 on $pmux $procmux$365.
+    dead port 2/4 on $pmux $procmux$365.
+    dead port 3/4 on $pmux $procmux$365.
+    dead port 4/4 on $pmux $procmux$365.
+Removed 23 multiplexer ports.
+<suppressed ~37 debug messages>
+
+10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+  Optimizing cells in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+  Optimizing cells in module \rns_top_crt.
+  Optimizing cells in module \rns_cu.
+  Optimizing cells in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+  Optimizing cells in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+  Optimizing cells in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+  Optimizing cells in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+Performed a total of 0 changes.
+
+10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+Finding identical cells in module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+Finding identical cells in module `\rns_top_crt'.
+Finding identical cells in module `\rns_cu'.
+Finding identical cells in module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+Finding identical cells in module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+Finding identical cells in module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+Finding identical cells in module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+Removed a total of 0 cells.
+
+10.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$369 ($dff) from module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice (D = \start_d, Q = \ALU_Done, rval = 1'0).
+Adding EN signal on $procdff$370 ($dff) from module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice (D = \y_next, Q = \y).
+Adding SRST signal on $procdff$371 ($dff) from module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice (D = \ALU_EN, Q = \start_d, rval = 1'0).
+Adding SRST signal on $procdff$374 ($dff) from module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon (D = \CRT_Start, Q = \start_d, rval = 1'0).
+Adding SRST signal on $procdff$373 ($dff) from module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon (D = \start_d, Q = \CRT_Done, rval = 1'0).
+Adding EN signal on $procdff$372 ($dff) from module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon (D = \X_next, Q = \X_out).
+Adding EN signal on $procdff$375 ($dff) from module rns_top_crt (D = \X_crt, Q = \X_reg).
+Adding EN signal on $procdff$376 ($dff) from module rns_top_crt (D = \A_in, Q = \A_reg).
+Adding EN signal on $procdff$377 ($dff) from module rns_top_crt (D = \B_in, Q = \B_reg).
+Adding EN signal on $procdff$378 ($dff) from module rns_top_crt (D = \Op_Sel, Q = \OpSel_reg).
+Adding SRST signal on $procdff$379 ($dff) from module rns_cu (D = \next_state, Q = \state, rval = 3'000).
+Adding SRST signal on $procdff$380 ($dff) from module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder (D = $procmux$281_Y, Q = \Encode_Done, rval = 1'0).
+Adding EN signal on $procdff$381 ($dff) from module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder (D = $mod$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:45$101_Y [1:0], Q = \r0).
+Adding EN signal on $procdff$382 ($dff) from module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder (D = $mod$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:46$102_Y [2:0], Q = \r1).
+Adding EN signal on $procdff$383 ($dff) from module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder (D = $mod$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:47$103_Y [2:0], Q = \r2).
+Adding EN signal on $procdff$384 ($dff) from module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder (D = $mod$/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/src/rns_encoder.v:48$104_Y [3:0], Q = \r3).
+Adding SRST signal on $procdff$385 ($dff) from module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice (D = \start_d, Q = \ALU_Done, rval = 1'0).
+Adding EN signal on $procdff$386 ($dff) from module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice (D = \y_next, Q = \y).
+Adding SRST signal on $procdff$387 ($dff) from module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice (D = \ALU_EN, Q = \start_d, rval = 1'0).
+Adding SRST signal on $procdff$388 ($dff) from module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice (D = \start_d, Q = \ALU_Done, rval = 1'0).
+Adding EN signal on $procdff$389 ($dff) from module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice (D = \y_next, Q = \y).
+Adding SRST signal on $procdff$390 ($dff) from module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice (D = \ALU_EN, Q = \start_d, rval = 1'0).
+Adding SRST signal on $procdff$391 ($dff) from module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice (D = \start_d, Q = \ALU_Done, rval = 1'0).
+Adding EN signal on $procdff$392 ($dff) from module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice (D = \y_next, Q = \y).
+Adding SRST signal on $procdff$393 ($dff) from module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice (D = \ALU_EN, Q = \start_d, rval = 1'0).
+
+10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+Finding unused cells or wires in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+Finding unused cells or wires in module \rns_top_crt..
+Finding unused cells or wires in module \rns_cu..
+Finding unused cells or wires in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+Finding unused cells or wires in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+Finding unused cells or wires in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+Finding unused cells or wires in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+Removed 43 unused cells and 252 unused wires.
+<suppressed ~55 debug messages>
+
+10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+Optimizing module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+Optimizing module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+Optimizing module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Optimizing module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+Optimizing module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+Optimizing module rns_cu.
+Optimizing module rns_top_crt.
+
+10.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+10.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \rns_cu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \rns_top_crt..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~19 debug messages>
+
+10.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+  Optimizing cells in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+  Optimizing cells in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+  Optimizing cells in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+  Optimizing cells in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+  Optimizing cells in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+  Optimizing cells in module \rns_cu.
+  Optimizing cells in module \rns_top_crt.
+Performed a total of 0 changes.
+
+10.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+Finding identical cells in module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+Finding identical cells in module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+Finding identical cells in module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+Finding identical cells in module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+<suppressed ~9 debug messages>
+Finding identical cells in module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+Finding identical cells in module `\rns_cu'.
+Finding identical cells in module `\rns_top_crt'.
+Removed a total of 3 cells.
+
+10.13. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$401 ($dffe) from module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Setting constant 0-bit at position 12 on $auto$ff.cc:266:slice$401 ($dffe) from module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Setting constant 0-bit at position 13 on $auto$ff.cc:266:slice$401 ($dffe) from module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Setting constant 0-bit at position 14 on $auto$ff.cc:266:slice$401 ($dffe) from module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Setting constant 0-bit at position 15 on $auto$ff.cc:266:slice$401 ($dffe) from module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Adding EN signal on $auto$ff.cc:266:slice$408 ($sdff) from module rns_cu (D = \next_state, Q = \state).
+
+10.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+Finding unused cells or wires in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+Finding unused cells or wires in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+Finding unused cells or wires in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+Finding unused cells or wires in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+Finding unused cells or wires in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+Finding unused cells or wires in module \rns_cu..
+Finding unused cells or wires in module \rns_top_crt..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+10.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+Optimizing module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+Optimizing module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+Optimizing module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Optimizing module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+Optimizing module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+Optimizing module rns_cu.
+Optimizing module rns_top_crt.
+
+10.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+10.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \rns_cu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \rns_top_crt..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~19 debug messages>
+
+10.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+  Optimizing cells in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+  Optimizing cells in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+  Optimizing cells in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+  Optimizing cells in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+  Optimizing cells in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+  Optimizing cells in module \rns_cu.
+  Optimizing cells in module \rns_top_crt.
+Performed a total of 0 changes.
+
+10.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+Finding identical cells in module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+Finding identical cells in module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+Finding identical cells in module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+Finding identical cells in module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+Finding identical cells in module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+Finding identical cells in module `\rns_cu'.
+Finding identical cells in module `\rns_top_crt'.
+Removed a total of 0 cells.
+
+10.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+10.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+Finding unused cells or wires in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+Finding unused cells or wires in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+Finding unused cells or wires in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+Finding unused cells or wires in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+Finding unused cells or wires in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+Finding unused cells or wires in module \rns_cu..
+Finding unused cells or wires in module \rns_top_crt..
+
+10.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+Optimizing module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+Optimizing module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+Optimizing module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Optimizing module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+Optimizing module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+Optimizing module rns_cu.
+Optimizing module rns_top_crt.
+
+10.23. Finished OPT passes. (There is nothing left to do.)
+
+11. Executing FSM pass (extract and optimize FSM).
+
+11.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+11.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+11.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+11.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+Finding unused cells or wires in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+Finding unused cells or wires in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+Finding unused cells or wires in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+Finding unused cells or wires in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+Finding unused cells or wires in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+Finding unused cells or wires in module \rns_cu..
+Finding unused cells or wires in module \rns_top_crt..
+
+11.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+11.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+11.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+11.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+12. Executing OPT pass (performing simple optimizations).
+
+12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+Optimizing module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+Optimizing module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+Optimizing module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Optimizing module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+Optimizing module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+Optimizing module rns_cu.
+Optimizing module rns_top_crt.
+
+12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+Finding identical cells in module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+Finding identical cells in module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+Finding identical cells in module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+Finding identical cells in module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+Finding identical cells in module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+Finding identical cells in module `\rns_cu'.
+Finding identical cells in module `\rns_top_crt'.
+Removed a total of 0 cells.
+
+12.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \rns_cu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \rns_top_crt..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~19 debug messages>
+
+12.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+  Optimizing cells in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+  Optimizing cells in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+  Optimizing cells in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+  Optimizing cells in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+  Optimizing cells in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+  Optimizing cells in module \rns_cu.
+  Optimizing cells in module \rns_top_crt.
+Performed a total of 0 changes.
+
+12.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+Finding identical cells in module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+Finding identical cells in module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+Finding identical cells in module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+Finding identical cells in module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+Finding identical cells in module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+Finding identical cells in module `\rns_cu'.
+Finding identical cells in module `\rns_top_crt'.
+Removed a total of 0 cells.
+
+12.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+12.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+Finding unused cells or wires in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+Finding unused cells or wires in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+Finding unused cells or wires in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+Finding unused cells or wires in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+Finding unused cells or wires in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+Finding unused cells or wires in module \rns_cu..
+Finding unused cells or wires in module \rns_top_crt..
+
+12.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+Optimizing module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+Optimizing module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+Optimizing module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Optimizing module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+Optimizing module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+Optimizing module rns_cu.
+Optimizing module rns_top_crt.
+
+12.9. Finished OPT passes. (There is nothing left to do.)
+
+13. Executing MEMORY pass.
+
+13.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+13.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+13.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+13.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+13.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+13.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+Finding unused cells or wires in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+Finding unused cells or wires in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+Finding unused cells or wires in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+Finding unused cells or wires in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+Finding unused cells or wires in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+Finding unused cells or wires in module \rns_cu..
+Finding unused cells or wires in module \rns_top_crt..
+
+13.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+13.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+13.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+Finding unused cells or wires in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+Finding unused cells or wires in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+Finding unused cells or wires in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+Finding unused cells or wires in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+Finding unused cells or wires in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+Finding unused cells or wires in module \rns_cu..
+Finding unused cells or wires in module \rns_top_crt..
+
+13.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+13.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+14. Executing TECHMAP pass (map to technology primitives).
+
+14.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+14.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod$a285b5a57fe61eabc57c91b8c412748ee1151a85\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $reduce_or.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$2653f68ddb8eab7b1907b4a20767b72a824a7a36\_90_mod for cells of type $mod.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=3:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$85df5dc01c7df96a7d8e5f1fdf76ce9ac452af63\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $sdff.
+Using template $paramod$80ccecfb4ff3a3741cb16c10e85083e98e395b88\_90_alu for cells of type $alu.
+Using template $paramod$2653f68ddb8eab7b1907b4a20767b72a824a7a36\$__div_mod_trunc for cells of type $__div_mod_trunc.
+Using template $paramod$076c9a7a3f037230073fe14dd4865d470cb48917\_90_alu for cells of type $alu.
+Using template $paramod$3e92930b84a1f8e99102decb41b57db2b77e2f7a\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc.
+  add \a * \b (3x3 bits, unsigned)
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $not.
+Running "alumacc" on wrapper $extern:wrap:$neg:Y_WIDTH=32:A_WIDTH=32:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$neg:Y_WIDTH=32:A_WIDTH=32:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$neg:Y_WIDTH=32:A_WIDTH=32:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using extmapper simplemap for cells of type $logic_and.
+Using template $paramod\$__div_mod_u\WIDTH=32'00000000000000000000000000100000 for cells of type $__div_mod_u.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100000 for cells of type $fa.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod$c6baa65225090ac0a120feab1b920965244aa496\_90_alu for cells of type $alu.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=32:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=32:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=32:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=33:B_WIDTH=33:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=33:B_WIDTH=33:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=33:B_WIDTH=33:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=33:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=33:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=33:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=34:B_WIDTH=34:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=34:B_WIDTH=34:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=34:B_WIDTH=34:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=34:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=34:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=34:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=35:B_WIDTH=35:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=35:B_WIDTH=35:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=35:B_WIDTH=35:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=35:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=35:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=35:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=36:B_WIDTH=36:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=36:B_WIDTH=36:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=36:B_WIDTH=36:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=36:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=36:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=36:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=37:B_WIDTH=37:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=37:B_WIDTH=37:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=37:B_WIDTH=37:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=37:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=37:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=37:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=38:B_WIDTH=38:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=38:B_WIDTH=38:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=38:B_WIDTH=38:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=38:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=38:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=38:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=39:B_WIDTH=39:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=39:B_WIDTH=39:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=39:B_WIDTH=39:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=39:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=39:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=39:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=40:B_WIDTH=40:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=40:B_WIDTH=40:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=40:B_WIDTH=40:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=40:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=40:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=40:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=41:B_WIDTH=41:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=41:B_WIDTH=41:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=41:B_WIDTH=41:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=41:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=41:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=41:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=42:B_WIDTH=42:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=42:B_WIDTH=42:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=42:B_WIDTH=42:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=42:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=42:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=42:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=43:B_WIDTH=43:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=43:B_WIDTH=43:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=43:B_WIDTH=43:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=43:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=43:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=43:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=44:B_WIDTH=44:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=44:B_WIDTH=44:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=44:B_WIDTH=44:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=44:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=44:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=44:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=45:B_WIDTH=45:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=45:B_WIDTH=45:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=45:B_WIDTH=45:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=45:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=45:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=45:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=46:B_WIDTH=46:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=46:B_WIDTH=46:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=46:B_WIDTH=46:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=46:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=46:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=46:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=47:B_WIDTH=47:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=47:B_WIDTH=47:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=47:B_WIDTH=47:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=47:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=47:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=47:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=48:B_WIDTH=48:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=48:B_WIDTH=48:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=48:B_WIDTH=48:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=48:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=48:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=48:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=49:B_WIDTH=49:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=49:B_WIDTH=49:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=49:B_WIDTH=49:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=49:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=49:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=49:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=50:B_WIDTH=50:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=50:B_WIDTH=50:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=50:B_WIDTH=50:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=50:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=50:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=50:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=51:B_WIDTH=51:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=51:B_WIDTH=51:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=51:B_WIDTH=51:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=51:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=51:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=51:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=52:B_WIDTH=52:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=52:B_WIDTH=52:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=52:B_WIDTH=52:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=52:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=52:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=52:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=53:B_WIDTH=53:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=53:B_WIDTH=53:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=53:B_WIDTH=53:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=53:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=53:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=53:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=54:B_WIDTH=54:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=54:B_WIDTH=54:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=54:B_WIDTH=54:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=54:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=54:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=54:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=55:B_WIDTH=55:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=55:B_WIDTH=55:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=55:B_WIDTH=55:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=55:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=55:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=55:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=56:B_WIDTH=56:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=56:B_WIDTH=56:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=56:B_WIDTH=56:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=56:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=56:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=56:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=57:B_WIDTH=57:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=57:B_WIDTH=57:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=57:B_WIDTH=57:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=57:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=57:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=57:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=58:B_WIDTH=58:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=58:B_WIDTH=58:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=58:B_WIDTH=58:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=58:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=58:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=58:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=59:B_WIDTH=59:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=59:B_WIDTH=59:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=59:B_WIDTH=59:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=59:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=59:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=59:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=60:B_WIDTH=60:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=60:B_WIDTH=60:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=60:B_WIDTH=60:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=60:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=60:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=60:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=61:B_WIDTH=61:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=61:B_WIDTH=61:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=61:B_WIDTH=61:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=61:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=61:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=61:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=62:B_WIDTH=62:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=62:B_WIDTH=62:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=62:B_WIDTH=62:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=62:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=62:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=62:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=63:B_WIDTH=63:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:Y_WIDTH=63:B_WIDTH=63:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=63:B_WIDTH=63:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=63:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=63:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:Y_WIDTH=1:B_WIDTH=63:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$789c344356a154d2afc7b832b41d1067dbc946ba\_90_alu for cells of type $alu.
+Using template $paramod$e39069e3f4ee35c1eea86993bd74689959babaab\_90_alu for cells of type $alu.
+Using template $paramod$d7aca3dc44b07ff19908fb1a3b606577588c15f1\_90_alu for cells of type $alu.
+Using template $paramod$f9e3a3c4b84f99cb56fad07743ec44ad55b11c8b\_90_alu for cells of type $alu.
+Using template $paramod$dd5ba471f7dcf35707f23b88cfd15b9582f97277\_90_alu for cells of type $alu.
+Using template $paramod$b7531bc0616f8d4cdd8159edd2237c9ddbb2ce01\_90_alu for cells of type $alu.
+Using template $paramod$ff8ba121d2f8e85b775c9f35ef677a1a276e7e1b\_90_alu for cells of type $alu.
+Using template $paramod$9a66d4bebbc4fab84566caffef9f094a1a467389\_90_alu for cells of type $alu.
+Using template $paramod$57bc309a5d8a948cec8981d26d896ee1cbf54d58\_90_alu for cells of type $alu.
+Using template $paramod$f94cfdb8ad389f4fc4515bcb65bccd7e2d189e95\_90_alu for cells of type $alu.
+Using template $paramod$2a25669ccd39fe7c0fbfb2a4d17416fc78667f00\_90_alu for cells of type $alu.
+Using template $paramod$d9397dfdf5f7cf5715aebc9527845402880218a0\_90_alu for cells of type $alu.
+Using template $paramod$acc477ace2583cc2ee0cf651c72a385d2bbbe9f1\_90_alu for cells of type $alu.
+Using template $paramod$415abdcadc251df4f0f033b62b8f3296b8461b4e\_90_alu for cells of type $alu.
+Using template $paramod$6573c1c269218f299badf6e04ca86aa37fdb352c\_90_alu for cells of type $alu.
+Using template $paramod$6a21b72c9c0b32e81b169c7e08a4d8b9c462448f\_90_alu for cells of type $alu.
+Using template $paramod$324e0706ebb77f1915b22f4a136962ec3fd1d7ff\_90_alu for cells of type $alu.
+Using template $paramod$461fc931d630cb01bec1fea87f37fbcc53f6f6a4\_90_alu for cells of type $alu.
+Using template $paramod$fe074227b1c5fbaa1ea56076182c29dbcf3a782a\_90_alu for cells of type $alu.
+Using template $paramod$85502450775e62e9c6a2fe29020b3433d4335647\_90_alu for cells of type $alu.
+Using template $paramod$e32c921f95fe0e2350204f4ecefc9e296355521b\_90_alu for cells of type $alu.
+Using template $paramod$05d913fba320393c7e943e625bef3af776153b60\_90_alu for cells of type $alu.
+Using template $paramod$8e07e2c0a3efc148d2f3714f3901076678774ed1\_90_alu for cells of type $alu.
+Using template $paramod$5b7e592b3c2951af6800b7fd597f66a79b72b91c\_90_alu for cells of type $alu.
+Using template $paramod$90182783100594e2dd636a282c4723cfc9adaedd\_90_alu for cells of type $alu.
+Using template $paramod$851c5c9b30913ea2deae68e3ca9e9c4e649723bc\_90_alu for cells of type $alu.
+Using template $paramod$1445aacdb5f2a1ef9fedf1373097ffa45438211d\_90_alu for cells of type $alu.
+Using template $paramod$7add42b712fe5bbbba521e93062103d6bf78a453\_90_alu for cells of type $alu.
+Using template $paramod$b6f86f6a0c43c26b22ee55f51e05d5951f0e6562\_90_alu for cells of type $alu.
+Using template $paramod$044fdceace8c449ec99f900b42120ac005ff4065\_90_alu for cells of type $alu.
+Using template $paramod$b6b58933bcf3c8b9e3e5de18c2637bd0e12c7c47\_90_alu for cells of type $alu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100001 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100010 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100011 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100100 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100101 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100110 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100111 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000101000 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000101001 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000101010 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000101011 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000101100 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000101101 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000101110 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000101111 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000110000 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000110001 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000110010 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000110011 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000110100 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000110101 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000110110 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000110111 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000111000 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000111001 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000111010 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000111011 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000111100 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000111101 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000111110 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000111111 for cells of type $lcu.
+Using template $paramod$2bd81f420048247ff6903399c560fe0f8bd48ccc\_90_mod for cells of type $mod.
+Using template $paramod$2bd81f420048247ff6903399c560fe0f8bd48ccc\$__div_mod_trunc for cells of type $__div_mod_trunc.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=63:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=63:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=63:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=62:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=62:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=62:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=61:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=61:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=61:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=60:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=60:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=60:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=59:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=59:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=59:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=58:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=58:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=58:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=57:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=57:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=57:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=56:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=56:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=56:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=55:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=55:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=55:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=54:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=54:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=54:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=53:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=53:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=53:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=52:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=52:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=52:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=51:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=51:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=51:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=50:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=50:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=50:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=49:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=49:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=49:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=48:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=48:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=48:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=47:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=47:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=47:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=46:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=46:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=46:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=45:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=45:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=45:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=44:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=44:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=44:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=43:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=43:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=43:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=42:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=42:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=42:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=41:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=41:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=41:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=40:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=40:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=40:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=39:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=39:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=39:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=38:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=38:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=38:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=37:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=37:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=37:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=36:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=36:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=36:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=35:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=35:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=35:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=34:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=34:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=34:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=33:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=33:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=33:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$ge:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=63:Y_WIDTH=63:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=63:Y_WIDTH=63:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=63:Y_WIDTH=63:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=62:Y_WIDTH=62:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=62:Y_WIDTH=62:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=62:Y_WIDTH=62:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=61:Y_WIDTH=61:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=61:Y_WIDTH=61:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=61:Y_WIDTH=61:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=60:Y_WIDTH=60:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=60:Y_WIDTH=60:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=60:Y_WIDTH=60:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=59:Y_WIDTH=59:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=59:Y_WIDTH=59:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=59:Y_WIDTH=59:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=58:Y_WIDTH=58:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=58:Y_WIDTH=58:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=58:Y_WIDTH=58:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=57:Y_WIDTH=57:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=57:Y_WIDTH=57:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=57:Y_WIDTH=57:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=56:Y_WIDTH=56:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=56:Y_WIDTH=56:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=56:Y_WIDTH=56:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=55:Y_WIDTH=55:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=55:Y_WIDTH=55:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=55:Y_WIDTH=55:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=54:Y_WIDTH=54:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=54:Y_WIDTH=54:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=54:Y_WIDTH=54:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=53:Y_WIDTH=53:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=53:Y_WIDTH=53:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=53:Y_WIDTH=53:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=52:Y_WIDTH=52:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=52:Y_WIDTH=52:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=52:Y_WIDTH=52:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=51:Y_WIDTH=51:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=51:Y_WIDTH=51:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=51:Y_WIDTH=51:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=50:Y_WIDTH=50:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=50:Y_WIDTH=50:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=50:Y_WIDTH=50:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=49:Y_WIDTH=49:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=49:Y_WIDTH=49:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=49:Y_WIDTH=49:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=48:Y_WIDTH=48:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=48:Y_WIDTH=48:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=48:Y_WIDTH=48:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=47:Y_WIDTH=47:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=47:Y_WIDTH=47:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=47:Y_WIDTH=47:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=46:Y_WIDTH=46:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=46:Y_WIDTH=46:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=46:Y_WIDTH=46:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=45:Y_WIDTH=45:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=45:Y_WIDTH=45:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=45:Y_WIDTH=45:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=44:Y_WIDTH=44:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=44:Y_WIDTH=44:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=44:Y_WIDTH=44:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=43:Y_WIDTH=43:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=43:Y_WIDTH=43:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=43:Y_WIDTH=43:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=42:Y_WIDTH=42:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=42:Y_WIDTH=42:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=42:Y_WIDTH=42:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=41:Y_WIDTH=41:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=41:Y_WIDTH=41:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=41:Y_WIDTH=41:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=40:Y_WIDTH=40:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=40:Y_WIDTH=40:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=40:Y_WIDTH=40:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=39:Y_WIDTH=39:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=39:Y_WIDTH=39:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=39:Y_WIDTH=39:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=38:Y_WIDTH=38:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=38:Y_WIDTH=38:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=38:Y_WIDTH=38:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=37:Y_WIDTH=37:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=37:Y_WIDTH=37:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=37:Y_WIDTH=37:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=36:Y_WIDTH=36:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=36:Y_WIDTH=36:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=36:Y_WIDTH=36:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=35:Y_WIDTH=35:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=35:Y_WIDTH=35:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=35:Y_WIDTH=35:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=34:Y_WIDTH=34:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=34:Y_WIDTH=34:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=34:Y_WIDTH=34:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=33:Y_WIDTH=33:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=33:Y_WIDTH=33:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=33:Y_WIDTH=33:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=1:A_WIDTH=32:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=3:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=10:B_SIGNED=0:B_WIDTH=10:Y_WIDTH=13:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=10:B_SIGNED=0:B_WIDTH=10:Y_WIDTH=13:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=10:B_SIGNED=0:B_WIDTH=10:Y_WIDTH=13:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=13:B_SIGNED=0:B_WIDTH=11:Y_WIDTH=13:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=13:B_SIGNED=0:B_WIDTH=11:Y_WIDTH=13:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=13:B_SIGNED=0:B_WIDTH=11:Y_WIDTH=13:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=13:B_SIGNED=0:B_WIDTH=12:Y_WIDTH=13:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=13:B_SIGNED=0:B_WIDTH=12:Y_WIDTH=13:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=13:B_SIGNED=0:B_WIDTH=12:Y_WIDTH=13:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$2653f68ddb8eab7b1907b4a20767b72a824a7a36\_90_alu for cells of type $alu.
+  add 385 * \x0_mod (32x2 bits, unsigned)
+  add 231 * \x1_mod (32x3 bits, unsigned)
+  add 165 * \x2_mod (32x3 bits, unsigned)
+  add 105 * \x3_mod (32x4 bits, unsigned)
+Using template $paramod$d8ac67fc92be90bfe0f6015263b32e887746435d\_90_alu for cells of type $alu.
+Using template $paramod$1696c7021060dec2ce5ffc8cc3ce918a66abbf6c\_90_alu for cells of type $alu.
+Using template $paramod$d066be84df89d36f73a08cc506728c5d3fb9157b\_90_alu for cells of type $alu.
+Running "alumacc" on wrapper $extern:wrap:$neg:A_SIGNED=0:A_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$neg:A_SIGNED=0:A_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$neg:A_SIGNED=0:A_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000001101 for cells of type $lcu.
+  add \a * \b (3x3 bits, unsigned)
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=2:B_SIGNED=0:B_WIDTH=2:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$97565c3687be688407d1272a293bd9d0ae6852dc\_90_pmux for cells of type $pmux.
+Using template $paramod$35776d8fbcbb875928060ad5ae09ddc0e8571283\_90_alu for cells of type $alu.
+Using template $paramod$9fe62a4b81638d72bc060d25c78265035b9c879a\_90_alu for cells of type $alu.
+Using template $paramod$a586fc170a813ff4ac6151d914901763ae218e46\_90_alu for cells of type $alu.
+  add \a * \b (2x2 bits, unsigned)
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=32:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=4:B_SIGNED=0:B_WIDTH=4:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$c2e415ef15bc3ccd2723772353a6b450d3d76206\_90_pmux for cells of type $pmux.
+Using template $paramod$5399723399d7abb774283441a74359518cfee0c2\_90_alu for cells of type $alu.
+Using template $paramod$a7817265ef3ab2ee43da53bbd8a90f6450d412d9\_90_alu for cells of type $alu.
+Using template $paramod$86918417b1d705351097c6e77e8f74c668cf6343\_90_alu for cells of type $alu.
+  add \a * \b (4x4 bits, unsigned)
+No more expansions possible.
+<suppressed ~329364 debug messages>
+
+15. Executing OPT pass (performing simple optimizations).
+
+15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+<suppressed ~88728 debug messages>
+Optimizing module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+<suppressed ~91809 debug messages>
+Optimizing module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+<suppressed ~89983 debug messages>
+Optimizing module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+<suppressed ~178072 debug messages>
+Optimizing module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+<suppressed ~106071 debug messages>
+Optimizing module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+<suppressed ~89872 debug messages>
+Optimizing module rns_cu.
+<suppressed ~50 debug messages>
+Optimizing module rns_top_crt.
+
+15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+<suppressed ~42798 debug messages>
+Finding identical cells in module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+<suppressed ~33450 debug messages>
+Finding identical cells in module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+<suppressed ~39063 debug messages>
+Finding identical cells in module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+<suppressed ~25200 debug messages>
+Finding identical cells in module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+<suppressed ~83037 debug messages>
+Finding identical cells in module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+<suppressed ~39489 debug messages>
+Finding identical cells in module `\rns_cu'.
+<suppressed ~81 debug messages>
+Finding identical cells in module `\rns_top_crt'.
+Removed a total of 87706 cells.
+
+15.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \rns_cu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \rns_top_crt..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+15.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+  Optimizing cells in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+  Optimizing cells in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+  Optimizing cells in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+  Optimizing cells in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+  Optimizing cells in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+  Optimizing cells in module \rns_cu.
+  Optimizing cells in module \rns_top_crt.
+Performed a total of 0 changes.
+
+15.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+Finding identical cells in module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+Finding identical cells in module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+Finding identical cells in module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+Finding identical cells in module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+Finding identical cells in module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+Finding identical cells in module `\rns_cu'.
+Finding identical cells in module `\rns_top_crt'.
+Removed a total of 0 cells.
+
+15.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+Finding unused cells or wires in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+Finding unused cells or wires in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+Finding unused cells or wires in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+Finding unused cells or wires in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+Finding unused cells or wires in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+Finding unused cells or wires in module \rns_cu..
+Finding unused cells or wires in module \rns_top_crt..
+Removed 8088 unused cells and 342328 unused wires.
+<suppressed ~8095 debug messages>
+
+15.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+<suppressed ~18 debug messages>
+Optimizing module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+<suppressed ~18 debug messages>
+Optimizing module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+<suppressed ~18 debug messages>
+Optimizing module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+<suppressed ~31 debug messages>
+Optimizing module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+<suppressed ~48 debug messages>
+Optimizing module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+<suppressed ~18 debug messages>
+Optimizing module rns_cu.
+Optimizing module rns_top_crt.
+
+15.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \rns_cu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \rns_top_crt..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+15.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+  Optimizing cells in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+  Optimizing cells in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+  Optimizing cells in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+  Optimizing cells in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+  Optimizing cells in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+  Optimizing cells in module \rns_cu.
+  Optimizing cells in module \rns_top_crt.
+Performed a total of 0 changes.
+
+15.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+<suppressed ~357 debug messages>
+Finding identical cells in module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+<suppressed ~351 debug messages>
+Finding identical cells in module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+<suppressed ~357 debug messages>
+Finding identical cells in module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+<suppressed ~228 debug messages>
+Finding identical cells in module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+<suppressed ~864 debug messages>
+Finding identical cells in module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+<suppressed ~357 debug messages>
+Finding identical cells in module `\rns_cu'.
+Finding identical cells in module `\rns_top_crt'.
+Removed a total of 838 cells.
+
+15.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$626163 ($_DFFE_PP_) from module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice (D = $procmux$127.Y_B [3], Q = \y [3], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$626162 ($_DFFE_PP_) from module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice (D = $procmux$127.Y_B [2], Q = \y [2], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$626161 ($_DFFE_PP_) from module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice (D = $procmux$127.Y_B [1], Q = \y [1], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$626160 ($_DFFE_PP_) from module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice (D = $procmux$127.Y_B [0], Q = \y [0], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$523967 ($_DFFE_PP_) from module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice (D = $procmux$318.Y_B [1], Q = \y [1], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$523966 ($_DFFE_PP_) from module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice (D = $procmux$318.Y_B [0], Q = \y [0], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$421584 ($_DFFE_PP_) from module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice (D = $procmux$360.Y_B [1], Q = \y [1], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$421585 ($_DFFE_PP_) from module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice (D = $procmux$360.Y_B [2], Q = \y [2], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$421583 ($_DFFE_PP_) from module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice (D = $procmux$360.Y_B [0], Q = \y [0], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$853 ($_DFFE_PP_) from module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice (D = $procmux$339.Y_B [2], Q = \y [2], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$852 ($_DFFE_PP_) from module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice (D = $procmux$339.Y_B [1], Q = \y [1], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$851 ($_DFFE_PP_) from module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice (D = $procmux$339.Y_B [0], Q = \y [0], rval = 1'0).
+
+15.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+Finding unused cells or wires in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+Finding unused cells or wires in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+Finding unused cells or wires in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+Finding unused cells or wires in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+Finding unused cells or wires in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+Finding unused cells or wires in module \rns_cu..
+Finding unused cells or wires in module \rns_top_crt..
+Removed 12 unused cells and 335 unused wires.
+<suppressed ~22 debug messages>
+
+15.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+Optimizing module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+Optimizing module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+Optimizing module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Optimizing module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+Optimizing module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+Optimizing module rns_cu.
+Optimizing module rns_top_crt.
+
+15.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \rns_cu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \rns_top_crt..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+15.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+  Optimizing cells in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+  Optimizing cells in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+  Optimizing cells in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+  Optimizing cells in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+  Optimizing cells in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+  Optimizing cells in module \rns_cu.
+  Optimizing cells in module \rns_top_crt.
+Performed a total of 0 changes.
+
+15.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+Finding identical cells in module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+Finding identical cells in module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+Finding identical cells in module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+Finding identical cells in module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+Finding identical cells in module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+Finding identical cells in module `\rns_cu'.
+Finding identical cells in module `\rns_top_crt'.
+Removed a total of 0 cells.
+
+15.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice..
+Finding unused cells or wires in module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice..
+Finding unused cells or wires in module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice..
+Finding unused cells or wires in module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon..
+Finding unused cells or wires in module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder..
+Finding unused cells or wires in module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice..
+Finding unused cells or wires in module \rns_cu..
+Finding unused cells or wires in module \rns_top_crt..
+
+15.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice.
+Optimizing module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice.
+Optimizing module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice.
+Optimizing module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon.
+Optimizing module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder.
+Optimizing module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice.
+Optimizing module rns_cu.
+Optimizing module rns_top_crt.
+
+15.23. Finished OPT passes. (There is nothing left to do.)
+
+16. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice...
+Checking module $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice...
+Checking module $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice...
+Checking module $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon...
+Checking module $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder...
+Checking module $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice...
+Checking module rns_cu...
+Checking module rns_top_crt...
+Found and reported 0 problems.
+
+17. Printing statistics.
+
+=== $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice ===
+
+   Number of wires:               2615
+   Number of wire bits:          13450
+   Number of public wires:           9
+   Number of public wire bits:      19
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               6878
+     $_AND_                       2577
+     $_MUX_                        900
+     $_NOT_                        897
+     $_OR_                        1572
+     $_SDFFCE_PN0P_                  4
+     $_SDFF_PN0_                     2
+     $_XOR_                        926
+
+=== $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice ===
+
+   Number of wires:               2624
+   Number of wire bits:          12993
+   Number of public wires:           9
+   Number of public wire bits:      13
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               6752
+     $_AND_                       2505
+     $_MUX_                        879
+     $_NOT_                        902
+     $_OR_                        1584
+     $_SDFFCE_PN0P_                  2
+     $_SDFF_PN0_                     2
+     $_XOR_                        878
+
+=== $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice ===
+
+   Number of wires:               2572
+   Number of wire bits:          13233
+   Number of public wires:           9
+   Number of public wire bits:      16
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               6743
+     $_AND_                       2519
+     $_MUX_                        890
+     $_NOT_                        885
+     $_OR_                        1544
+     $_SDFFCE_PN0P_                  3
+     $_SDFF_PN0_                     2
+     $_XOR_                        900
+
+=== $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon ===
+
+   Number of wires:                389
+   Number of wire bits:           4971
+   Number of public wires:          31
+   Number of public wire bits:     448
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                951
+     $_AND_                        378
+     $_DFFE_PP_                     11
+     $_MUX_                        104
+     $_NOT_                        107
+     $_OR_                         153
+     $_SDFF_PN0_                     2
+     $_XOR_                        196
+
+=== $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder ===
+
+   Number of wires:               3943
+   Number of wire bits:          16442
+   Number of public wires:          13
+   Number of public wire bits:      44
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              10382
+     $_AND_                       3848
+     $_DFFE_PP_                     12
+     $_MUX_                       1388
+     $_NOT_                       1389
+     $_OR_                        2403
+     $_SDFF_PN0_                     1
+     $_XOR_                       1341
+
+=== $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice ===
+
+   Number of wires:               2662
+   Number of wire bits:          13188
+   Number of public wires:           9
+   Number of public wire bits:      16
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               6879
+     $_AND_                       2554
+     $_MUX_                        890
+     $_NOT_                        919
+     $_OR_                        1611
+     $_SDFFCE_PN0P_                  3
+     $_SDFF_PN0_                     2
+     $_XOR_                        900
+
+=== rns_cu ===
+
+   Number of wires:                 56
+   Number of wire bits:            123
+   Number of public wires:          19
+   Number of public wire bits:      25
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 79
+     $_AND_                         13
+     $_MUX_                         15
+     $_NOT_                         12
+     $_OR_                          36
+     $_SDFFE_PN0P_                   3
+
+=== rns_top_crt ===
+
+   Number of wires:                 44
+   Number of wire bits:            177
+   Number of public wires:          42
+   Number of public wire bits:     175
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 62
+     $_AND_                          4
+     $_DFFE_PP_                     50
+     $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice      1
+     $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice      1
+     $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice      1
+     $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon      1
+     $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder      2
+     $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice      1
+     rns_cu                          1
+
+=== design hierarchy ===
+
+   rns_top_crt                       1
+     $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice      1
+     $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice      1
+     $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice      1
+     $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon      1
+     $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder      2
+     $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice      1
+     rns_cu                          1
+
+   Number of wires:              18848
+   Number of wire bits:          91019
+   Number of public wires:         154
+   Number of public wire bits:     800
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              49100
+     $_AND_                      18246
+     $_DFFE_PP_                     85
+     $_MUX_                       6454
+     $_NOT_                       6500
+     $_OR_                       11306
+     $_SDFFCE_PN0P_                 12
+     $_SDFFE_PN0P_                   3
+     $_SDFF_PN0_                    12
+     $_XOR_                       6482
+
+{
+   "creator": "Yosys 0.33 (git sha1 2584903a060)",
+   "invocation": "stat -json ",
+   "modules": {
+      "$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\\rns_slice": {
+         "num_wires":         2615,
+         "num_wire_bits":     13450,
+         "num_pub_wires":     9,
+         "num_pub_wire_bits": 19,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         6878,
+         "num_cells_by_type": {
+            "$_AND_": 2577,
+            "$_MUX_": 900,
+            "$_NOT_": 897,
+            "$_OR_": 1572,
+            "$_SDFFCE_PN0P_": 4,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 926
+         }
+      },
+      "$paramod$1adfbccbe62fa7839f30386c216a6366071946df\\rns_slice": {
+         "num_wires":         2624,
+         "num_wire_bits":     12993,
+         "num_pub_wires":     9,
+         "num_pub_wire_bits": 13,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         6752,
+         "num_cells_by_type": {
+            "$_AND_": 2505,
+            "$_MUX_": 879,
+            "$_NOT_": 902,
+            "$_OR_": 1584,
+            "$_SDFFCE_PN0P_": 2,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 878
+         }
+      },
+      "$paramod$7a603a2b96000a70b7859574fec05419e1813183\\rns_slice": {
+         "num_wires":         2572,
+         "num_wire_bits":     13233,
+         "num_pub_wires":     9,
+         "num_pub_wire_bits": 16,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         6743,
+         "num_cells_by_type": {
+            "$_AND_": 2519,
+            "$_MUX_": 890,
+            "$_NOT_": 885,
+            "$_OR_": 1544,
+            "$_SDFFCE_PN0P_": 3,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 900
+         }
+      },
+      "$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\\rns_crt_recon": {
+         "num_wires":         389,
+         "num_wire_bits":     4971,
+         "num_pub_wires":     31,
+         "num_pub_wire_bits": 448,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         951,
+         "num_cells_by_type": {
+            "$_AND_": 378,
+            "$_DFFE_PP_": 11,
+            "$_MUX_": 104,
+            "$_NOT_": 107,
+            "$_OR_": 153,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 196
+         }
+      },
+      "$paramod$8c449ee92a350eda629945ff736010636fc89af8\\rns_encoder": {
+         "num_wires":         3943,
+         "num_wire_bits":     16442,
+         "num_pub_wires":     13,
+         "num_pub_wire_bits": 44,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         10382,
+         "num_cells_by_type": {
+            "$_AND_": 3848,
+            "$_DFFE_PP_": 12,
+            "$_MUX_": 1388,
+            "$_NOT_": 1389,
+            "$_OR_": 2403,
+            "$_SDFF_PN0_": 1,
+            "$_XOR_": 1341
+         }
+      },
+      "$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\\rns_slice": {
+         "num_wires":         2662,
+         "num_wire_bits":     13188,
+         "num_pub_wires":     9,
+         "num_pub_wire_bits": 16,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         6879,
+         "num_cells_by_type": {
+            "$_AND_": 2554,
+            "$_MUX_": 890,
+            "$_NOT_": 919,
+            "$_OR_": 1611,
+            "$_SDFFCE_PN0P_": 3,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 900
+         }
+      },
+      "\\rns_cu": {
+         "num_wires":         56,
+         "num_wire_bits":     123,
+         "num_pub_wires":     19,
+         "num_pub_wire_bits": 25,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         79,
+         "num_cells_by_type": {
+            "$_AND_": 13,
+            "$_MUX_": 15,
+            "$_NOT_": 12,
+            "$_OR_": 36,
+            "$_SDFFE_PN0P_": 3
+         }
+      },
+      "\\rns_top_crt": {
+         "num_wires":         44,
+         "num_wire_bits":     177,
+         "num_pub_wires":     42,
+         "num_pub_wire_bits": 175,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         62,
+         "num_cells_by_type": {
+            "$_AND_": 4,
+            "$_DFFE_PP_": 50,
+            "$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\\rns_slice": 1,
+            "$paramod$1adfbccbe62fa7839f30386c216a6366071946df\\rns_slice": 1,
+            "$paramod$7a603a2b96000a70b7859574fec05419e1813183\\rns_slice": 1,
+            "$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\\rns_crt_recon": 1,
+            "$paramod$8c449ee92a350eda629945ff736010636fc89af8\\rns_encoder": 2,
+            "$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\\rns_slice": 1,
+            "rns_cu": 1
+         }
+      }
+   },
+      "design": {
+         "num_wires":         18848,
+         "num_wire_bits":     91019,
+         "num_pub_wires":     154,
+         "num_pub_wire_bits": 800,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         49100,
+         "num_cells_by_type": {
+            "$_AND_": 18246,
+            "$_DFFE_PP_": 85,
+            "$_MUX_": 6454,
+            "$_NOT_": 6500,
+            "$_OR_": 11306,
+            "$_SDFFCE_PN0P_": 12,
+            "$_SDFFE_PN0P_": 3,
+            "$_SDFF_PN0_": 12,
+            "$_XOR_": 6482
+         }
+      }
+}
+
+18. Executing Verilog backend.
+Dumping module `$paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice'.
+Dumping module `$paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice'.
+Dumping module `$paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice'.
+Dumping module `$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon'.
+Dumping module `$paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder'.
+Dumping module `$paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice'.
+Dumping module `\rns_cu'.
+Dumping module `\rns_top_crt'.
+
+End of script. Logfile hash: 7317bd86ed, CPU: user 92.81s system 2.33s, MEM: 4789.20 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 40% 1x techmap (37 sec), 32% 77x opt_expr (30 sec), ...

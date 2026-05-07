@@ -1,0 +1,10 @@
+{
+  "variant": "designs_rns_crt",
+  "clock_ns_requested": 30.0,
+  "github_run_id": "25488528576",
+  "github_run_number": "6",
+  "commit_sha": "0659846f983d1f4822bd085259f56adb78cdbd40",
+  "synth_strategy_override": "",
+  "stage_label": "mid",
+  "artifact_name": "mid-designs_rns_crt-30ns-r25488528576"
+}

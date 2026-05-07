@@ -1,0 +1,15 @@
+VCD info: dumpfile rtl_precheck.vcd opened for output.
+[176000] TEST         ADD_10_7 | CRT | op=00, A=10, B=7, X_out=17, expected=17
+  -> PASS
+[296000] TEST         ADD_WRAP | CRT | op=00, A=1000, B=300, X_out=145, expected=145
+  -> PASS
+[416000] TEST       SUB_200_50 | CRT | op=01, A=200, B=50, X_out=150, expected=150
+  -> PASS
+[536000] TEST         SUB_WRAP | CRT | op=01, A=50, B=200, X_out=1005, expected=1005
+  -> PASS
+[656000] TEST        MUL_11_17 | CRT | op=10, A=11, B=17, X_out=187, expected=187
+  -> PASS
+[776000] TEST         MUL_WRAP | CRT | op=10, A=40, B=40, X_out=445, expected=445
+  -> PASS
+All CRT tests completed.
+/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rns_crt/tb/tb_rns_top_crt.v:117: $finish called at 800000 (1ps)

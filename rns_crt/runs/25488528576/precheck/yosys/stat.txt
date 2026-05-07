@@ -1,0 +1,176 @@
+
+17. Printing statistics.
+
+=== $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice ===
+
+   Number of wires:               2615
+   Number of wire bits:          13450
+   Number of public wires:           9
+   Number of public wire bits:      19
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               6878
+     $_AND_                       2577
+     $_MUX_                        900
+     $_NOT_                        897
+     $_OR_                        1572
+     $_SDFFCE_PN0P_                  4
+     $_SDFF_PN0_                     2
+     $_XOR_                        926
+
+=== $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice ===
+
+   Number of wires:               2624
+   Number of wire bits:          12993
+   Number of public wires:           9
+   Number of public wire bits:      13
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               6752
+     $_AND_                       2505
+     $_MUX_                        879
+     $_NOT_                        902
+     $_OR_                        1584
+     $_SDFFCE_PN0P_                  2
+     $_SDFF_PN0_                     2
+     $_XOR_                        878
+
+=== $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice ===
+
+   Number of wires:               2572
+   Number of wire bits:          13233
+   Number of public wires:           9
+   Number of public wire bits:      16
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               6743
+     $_AND_                       2519
+     $_MUX_                        890
+     $_NOT_                        885
+     $_OR_                        1544
+     $_SDFFCE_PN0P_                  3
+     $_SDFF_PN0_                     2
+     $_XOR_                        900
+
+=== $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon ===
+
+   Number of wires:                389
+   Number of wire bits:           4971
+   Number of public wires:          31
+   Number of public wire bits:     448
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                951
+     $_AND_                        378
+     $_DFFE_PP_                     11
+     $_MUX_                        104
+     $_NOT_                        107
+     $_OR_                         153
+     $_SDFF_PN0_                     2
+     $_XOR_                        196
+
+=== $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder ===
+
+   Number of wires:               3943
+   Number of wire bits:          16442
+   Number of public wires:          13
+   Number of public wire bits:      44
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              10382
+     $_AND_                       3848
+     $_DFFE_PP_                     12
+     $_MUX_                       1388
+     $_NOT_                       1389
+     $_OR_                        2403
+     $_SDFF_PN0_                     1
+     $_XOR_                       1341
+
+=== $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice ===
+
+   Number of wires:               2662
+   Number of wire bits:          13188
+   Number of public wires:           9
+   Number of public wire bits:      16
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               6879
+     $_AND_                       2554
+     $_MUX_                        890
+     $_NOT_                        919
+     $_OR_                        1611
+     $_SDFFCE_PN0P_                  3
+     $_SDFF_PN0_                     2
+     $_XOR_                        900
+
+=== rns_cu ===
+
+   Number of wires:                 56
+   Number of wire bits:            123
+   Number of public wires:          19
+   Number of public wire bits:      25
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 79
+     $_AND_                         13
+     $_MUX_                         15
+     $_NOT_                         12
+     $_OR_                          36
+     $_SDFFE_PN0P_                   3
+
+=== rns_top_crt ===
+
+   Number of wires:                 44
+   Number of wire bits:            177
+   Number of public wires:          42
+   Number of public wire bits:     175
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 62
+     $_AND_                          4
+     $_DFFE_PP_                     50
+     $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice      1
+     $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice      1
+     $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice      1
+     $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon      1
+     $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder      2
+     $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice      1
+     rns_cu                          1
+
+=== design hierarchy ===
+
+   rns_top_crt                       1
+     $paramod$02d1bd746e48028e5ec8cc961a44bbb25d8df1f7\rns_slice      1
+     $paramod$1adfbccbe62fa7839f30386c216a6366071946df\rns_slice      1
+     $paramod$7a603a2b96000a70b7859574fec05419e1813183\rns_slice      1
+     $paramod$7f1808e897df2146ee321bce132f3deaba559d8e\rns_crt_recon      1
+     $paramod$8c449ee92a350eda629945ff736010636fc89af8\rns_encoder      2
+     $paramod$dd66683ce09634dbf8ac8d215aeab6d7d4511450\rns_slice      1
+     rns_cu                          1
+
+   Number of wires:              18848
+   Number of wire bits:          91019
+   Number of public wires:         154
+   Number of public wire bits:     800
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              49100
+     $_AND_                      18246
+     $_DFFE_PP_                     85
+     $_MUX_                       6454
+     $_NOT_                       6500
+     $_OR_                       11306
+     $_SDFFCE_PN0P_                 12
+     $_SDFFE_PN0P_                   3
+     $_SDFF_PN0_                    12
+     $_XOR_                       6482
+
