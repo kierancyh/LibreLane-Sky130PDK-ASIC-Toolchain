@@ -1,0 +1,17 @@
+{
+  "tool": "yosys",
+  "enabled": true,
+  "status": "PASS",
+  "passed": true,
+  "warning_count": 0,
+  "rc": 0,
+  "variant_path": "designs/rrns_crt_all_lane",
+  "safe_variant": "designs_rrns_crt_all_lane",
+  "top_module": "rrns_all_lane_top_crt",
+  "netlist_present": true,
+  "stat_txt_present": true,
+  "stat_json_present": true,
+  "reason": "ok",
+  "all_source_count": 6,
+  "used_source_count": 6
+}

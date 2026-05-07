@@ -1,0 +1,17 @@
+{
+  "tool": "icarus",
+  "enabled": true,
+  "status": "PASS",
+  "passed": true,
+  "compile_pass": true,
+  "compile_rc": 0,
+  "run_pass": true,
+  "run_rc": 0,
+  "vcd_present": true,
+  "vcd_name": "all_lane_crt_rtl_precheck.vcd",
+  "variant_path": "designs/rrns_crt_all_lane",
+  "safe_variant": "designs_rrns_crt_all_lane",
+  "top_module": "rrns_all_lane_top_crt",
+  "testbench_top": "tb_rrns_all_lane_top_crt",
+  "reason": "ok"
+}
