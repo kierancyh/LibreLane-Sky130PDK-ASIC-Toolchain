@@ -4,7 +4,7 @@ project:
   notes: "Drop any multi-file Verilog design under designs/<name>/src and set top_module in designs/<name>/variant.yaml"
 
 experiments:
-  - variant: designs/rrns_mrc_all_lane
+  - variant: designs/final_alu_configurable
     enabled: true
 
 # Available:
