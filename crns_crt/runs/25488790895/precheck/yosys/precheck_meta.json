@@ -1,0 +1,30 @@
+{
+  "variant_path": "designs/crns_crt",
+  "safe_variant": "designs_crns_crt",
+  "top_module": "crns_top_crt",
+  "rtl_sources_all": [
+    "designs/crns_crt/src/crns_crt_recon.v",
+    "designs/crns_crt/src/crns_cu.v",
+    "designs/crns_crt/src/crns_encoder.v",
+    "designs/crns_crt/src/crns_slice.v",
+    "designs/crns_crt/src/crns_top_crt.v"
+  ],
+  "rtl_sources_closure": [
+    "designs/crns_crt/src/crns_crt_recon.v",
+    "designs/crns_crt/src/crns_cu.v",
+    "designs/crns_crt/src/crns_encoder.v",
+    "designs/crns_crt/src/crns_slice.v",
+    "designs/crns_crt/src/crns_top_crt.v"
+  ],
+  "reachable_modules": [
+    "crns_top_crt",
+    "crns_crt_recon",
+    "crns_cu",
+    "crns_encoder",
+    "crns_slice"
+  ],
+  "duplicate_reachable_modules": {},
+  "tool": "yosys",
+  "mode": "structural",
+  "enabled": true
+}

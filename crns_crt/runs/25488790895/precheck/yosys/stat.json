@@ -1,0 +1,181 @@
+{
+   "creator": "Yosys 0.33 (git sha1 2584903a060)",
+   "invocation": "stat -json ",
+   "modules": {
+      "$paramod$42a31636d45154a4a9e15da7e4670447f6046293\\crns_slice": {
+         "num_wires":         2876,
+         "num_wire_bits":     11339,
+         "num_pub_wires":     16,
+         "num_pub_wire_bits": 207,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         7770,
+         "num_cells_by_type": {
+            "$_AND_": 2883,
+            "$_DFFE_PP_": 2,
+            "$_MUX_": 1006,
+            "$_NOT_": 1017,
+            "$_OR_": 1786,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 1074
+         }
+      },
+      "$paramod$5214227cdbd876971d30ff4a869b2ed47547f507\\crns_slice": {
+         "num_wires":         2736,
+         "num_wire_bits":     11212,
+         "num_pub_wires":     16,
+         "num_pub_wire_bits": 211,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         7498,
+         "num_cells_by_type": {
+            "$_AND_": 2805,
+            "$_DFFE_PP_": 3,
+            "$_MUX_": 979,
+            "$_NOT_": 961,
+            "$_OR_": 1689,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 1059
+         }
+      },
+      "$paramod$75bd7e7589a2ab0cad0248cf0dce2f51fbff2a83\\crns_encoder": {
+         "num_wires":         10193,
+         "num_wire_bits":     38829,
+         "num_pub_wires":     25,
+         "num_pub_wire_bits": 544,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         27237,
+         "num_cells_by_type": {
+            "$_AND_": 10113,
+            "$_DFFE_PP_": 12,
+            "$_DFF_P_": 1,
+            "$_MUX_": 3812,
+            "$_NOT_": 3652,
+            "$_OR_": 6038,
+            "$_XOR_": 3609
+         }
+      },
+      "$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\\crns_crt_recon": {
+         "num_wires":         10445,
+         "num_wire_bits":     41768,
+         "num_pub_wires":     32,
+         "num_pub_wire_bits": 459,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         27638,
+         "num_cells_by_type": {
+            "$_AND_": 10299,
+            "$_DFFE_PP_": 11,
+            "$_MUX_": 3660,
+            "$_NOT_": 3624,
+            "$_OR_": 6299,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 3743
+         }
+      },
+      "$paramod$8208ef17ccb8f00ef30e84808973b91f74de98ea\\crns_slice": {
+         "num_wires":         2825,
+         "num_wire_bits":     11271,
+         "num_pub_wires":     16,
+         "num_pub_wire_bits": 211,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         7622,
+         "num_cells_by_type": {
+            "$_AND_": 2838,
+            "$_DFFE_PP_": 3,
+            "$_MUX_": 979,
+            "$_NOT_": 992,
+            "$_OR_": 1749,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 1059
+         }
+      },
+      "$paramod$8a0ad45c90698b2a840e021f0aaca00c1d72e963\\crns_slice": {
+         "num_wires":         2676,
+         "num_wire_bits":     11084,
+         "num_pub_wires":     16,
+         "num_pub_wire_bits": 215,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         7351,
+         "num_cells_by_type": {
+            "$_AND_": 2758,
+            "$_DFFE_PP_": 4,
+            "$_MUX_": 952,
+            "$_NOT_": 937,
+            "$_OR_": 1652,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 1046
+         }
+      },
+      "\\crns_cu": {
+         "num_wires":         56,
+         "num_wire_bits":     123,
+         "num_pub_wires":     19,
+         "num_pub_wire_bits": 25,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         79,
+         "num_cells_by_type": {
+            "$_AND_": 13,
+            "$_MUX_": 15,
+            "$_NOT_": 12,
+            "$_OR_": 36,
+            "$_SDFFE_PN0P_": 3
+         }
+      },
+      "\\crns_top_crt": {
+         "num_wires":         47,
+         "num_wire_bits":     211,
+         "num_pub_wires":     45,
+         "num_pub_wire_bits": 209,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         96,
+         "num_cells_by_type": {
+            "$_AND_": 4,
+            "$_DFFE_PP_": 50,
+            "$_DFF_P_": 34,
+            "$paramod$42a31636d45154a4a9e15da7e4670447f6046293\\crns_slice": 1,
+            "$paramod$5214227cdbd876971d30ff4a869b2ed47547f507\\crns_slice": 1,
+            "$paramod$75bd7e7589a2ab0cad0248cf0dce2f51fbff2a83\\crns_encoder": 2,
+            "$paramod$7f1808e897df2146ee321bce132f3deaba559d8e\\crns_crt_recon": 1,
+            "$paramod$8208ef17ccb8f00ef30e84808973b91f74de98ea\\crns_slice": 1,
+            "$paramod$8a0ad45c90698b2a840e021f0aaca00c1d72e963\\crns_slice": 1,
+            "crns_cu": 1
+         }
+      }
+   },
+      "design": {
+         "num_wires":         42047,
+         "num_wire_bits":     164666,
+         "num_pub_wires":     210,
+         "num_pub_wire_bits": 2625,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         112520,
+         "num_cells_by_type": {
+            "$_AND_": 41826,
+            "$_DFFE_PP_": 97,
+            "$_DFF_P_": 36,
+            "$_MUX_": 15215,
+            "$_NOT_": 14847,
+            "$_OR_": 25287,
+            "$_SDFFE_PN0P_": 3,
+            "$_SDFF_PN0_": 10,
+            "$_XOR_": 15199
+         }
+      }
+}
+
