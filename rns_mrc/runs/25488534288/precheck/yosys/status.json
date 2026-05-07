@@ -1,0 +1,17 @@
+{
+  "tool": "yosys",
+  "enabled": true,
+  "status": "PASS",
+  "passed": true,
+  "warning_count": 0,
+  "rc": 0,
+  "variant_path": "designs/rns_mrc",
+  "safe_variant": "designs_rns_mrc",
+  "top_module": "rns_top_mrc",
+  "netlist_present": true,
+  "stat_txt_present": true,
+  "stat_json_present": true,
+  "reason": "ok",
+  "all_source_count": 5,
+  "used_source_count": 5
+}

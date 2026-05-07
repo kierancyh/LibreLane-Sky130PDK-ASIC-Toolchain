@@ -1,0 +1,30 @@
+{
+  "variant_path": "designs/rns_mrc",
+  "safe_variant": "designs_rns_mrc",
+  "top_module": "rns_top_mrc",
+  "rtl_sources_all": [
+    "designs/rns_mrc/src/rns_cu.v",
+    "designs/rns_mrc/src/rns_encoder.v",
+    "designs/rns_mrc/src/rns_mrc_recon.v",
+    "designs/rns_mrc/src/rns_slice.v",
+    "designs/rns_mrc/src/rns_top_mrc.v"
+  ],
+  "rtl_sources_closure": [
+    "designs/rns_mrc/src/rns_cu.v",
+    "designs/rns_mrc/src/rns_encoder.v",
+    "designs/rns_mrc/src/rns_mrc_recon.v",
+    "designs/rns_mrc/src/rns_slice.v",
+    "designs/rns_mrc/src/rns_top_mrc.v"
+  ],
+  "reachable_modules": [
+    "rns_top_mrc",
+    "rns_cu",
+    "rns_encoder",
+    "rns_mrc_recon",
+    "rns_slice"
+  ],
+  "duplicate_reachable_modules": {},
+  "tool": "yosys",
+  "mode": "structural",
+  "enabled": true
+}

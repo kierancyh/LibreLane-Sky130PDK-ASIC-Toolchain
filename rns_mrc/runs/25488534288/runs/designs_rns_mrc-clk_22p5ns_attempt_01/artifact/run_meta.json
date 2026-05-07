@@ -1,0 +1,10 @@
+{
+  "variant": "designs_rns_mrc",
+  "clock_ns_requested": 22.5,
+  "github_run_id": "25488534288",
+  "github_run_number": "7",
+  "commit_sha": "ff4eeb9f127acbacc1d12e5fd705dcc67f661677",
+  "synth_strategy_override": "",
+  "stage_label": "refine-2",
+  "artifact_name": "refine2-designs_rns_mrc-22.5ns-r25488534288"
+}
