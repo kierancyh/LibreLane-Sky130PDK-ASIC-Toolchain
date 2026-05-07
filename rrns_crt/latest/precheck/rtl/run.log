@@ -1,0 +1,45 @@
+VCD info: dumpfile crt_rtl_precheck.vcd opened for output.
+[176000] TEST                         ADD_10_7 | X_out=17 exp=17 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[296000] TEST                      ADD_123_321 | X_out=444 exp=444 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[416000] TEST                       SUB_200_50 | X_out=150 exp=150 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[536000] TEST                      SUB_400_123 | X_out=277 exp=277 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[656000] TEST                         SUB_WRAP | X_out=-150 exp=-150 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[776000] TEST                  SUB_NEG_123_400 | X_out=-277 exp=-277 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[896000] TEST                        MUL_11_17 | X_out=187 exp=187 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[1016000] TEST                        MUL_14_20 | X_out=280 exp=280 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[1136000] TEST                         MUL_9_21 | X_out=189 exp=189 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[1256000] TEST                 ADD_WRAP_INVALID | X_out=145 exp=145 err=1 exp_err=1 corr=0 exp_corr=0 valid=0 exp_valid=0
+  -> PASS
+[1376000] TEST                 MUL_WRAP_INVALID | X_out=445 exp=445 err=1 exp_err=1 corr=0 exp_corr=0 valid=0 exp_valid=0
+  -> PASS
+[1496000] TEST                  ADD_RED13_FAULT | X_out=17 exp=17 forced_r13=5 err=1 corr=1 valid=1
+  -> PASS
+[1616000] TEST                  MUL_RED13_FAULT | X_out=280 exp=280 forced_r13=-5 err=1 corr=1 valid=1
+  -> PASS
+[1736000] TEST                  SUB_RED17_FAULT | X_out=150 exp=150 forced_r17=-2 err=1 corr=1 valid=1
+  -> PASS
+[1856000] TEST                  ADD_RED17_FAULT | X_out=444 exp=444 forced_r17=3 err=1 corr=1 valid=1
+  -> PASS
+[1976000] TEST              ADD_BASE_FAULT_CORR | X_out=17 exp=17 orig_r3=-5 forced_r3=0 err=1 corr=1 valid=1
+  -> PASS
+[2096000] TEST             ADD2_BASE_FAULT_CORR | X_out=444 exp=444 orig_r3=4 forced_r3=0 err=1 corr=1 valid=1
+  -> PASS
+[2216000] TEST              SUB_BASE_FAULT_CORR | X_out=277 exp=277 orig_r3=2 forced_r3=0 err=1 corr=1 valid=1
+  -> PASS
+[2336000] TEST          SUB_NEG_BASE_FAULT_CORR | X_out=-277 exp=-277 orig_r3=-2 forced_r3=0 err=1 corr=1 valid=1
+  -> PASS
+[2456000] TEST              MUL_BASE_FAULT_CORR | X_out=187 exp=187 orig_r3=0 forced_r3=1 err=1 corr=1 valid=1
+  -> PASS
+[2576000] TEST             MUL2_BASE_FAULT_CORR | X_out=280 exp=280 orig_r3=5 forced_r3=0 err=1 corr=1 valid=1
+  -> PASS
+CRT RRNS correction-stage tests completed.
+/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rrns_crt/tb/tb_rrns_top_crt.v:255: $finish called at 2600000 (1ps)
