@@ -1,0 +1,15 @@
+VCD info: dumpfile rtl_precheck.vcd opened for output.
+[216000] TEST         ADD_10_7 | op=00, A=10, B=7, X_out=17, expected=17
+  -> PASS
+[376000] TEST         ADD_WRAP | op=00, A=1000, B=300, X_out=145, expected=145
+  -> PASS
+[536000] TEST       SUB_200_50 | op=01, A=200, B=50, X_out=150, expected=150
+  -> PASS
+[696000] TEST         SUB_WRAP | op=01, A=50, B=200, X_out=-150, expected=-150
+  -> PASS
+[856000] TEST        MUL_11_17 | op=10, A=11, B=17, X_out=187, expected=187
+  -> PASS
+[1016000] TEST         MUL_WRAP | op=10, A=40, B=40, X_out=445, expected=445
+  -> PASS
+All MRC tests completed.
+/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/crns_mrc/tb/tb_crns_top_mrc.v:116: $finish called at 1040000 (1ps)
