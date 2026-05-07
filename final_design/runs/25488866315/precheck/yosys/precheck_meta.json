@@ -1,0 +1,49 @@
+{
+  "variant_path": "designs/final_design",
+  "safe_variant": "designs_final_design",
+  "top_module": "final_alu_runtime_top",
+  "rtl_sources_all": [
+    "designs/final_design/src/final_alu_cfg_checker.v",
+    "designs/final_design/src/final_alu_cfg_precompute.v",
+    "designs/final_design/src/final_alu_cfg_regs.v",
+    "designs/final_design/src/final_alu_checker_reencode.v",
+    "designs/final_design/src/final_alu_corrector_search.v",
+    "designs/final_design/src/final_alu_encoder_runtime.v",
+    "designs/final_design/src/final_alu_modinv_core.v",
+    "designs/final_design/src/final_alu_op_range_guard.v",
+    "designs/final_design/src/final_alu_range_check.v",
+    "designs/final_design/src/final_alu_recon_garner.v",
+    "designs/final_design/src/final_alu_runtime_cu.v",
+    "designs/final_design/src/final_alu_runtime_top.v",
+    "designs/final_design/src/final_alu_slice_runtime.v",
+    "designs/final_design/src/final_alu_subset_rom.v"
+  ],
+  "rtl_sources_closure": [
+    "designs/final_design/src/final_alu_cfg_checker.v",
+    "designs/final_design/src/final_alu_cfg_precompute.v",
+    "designs/final_design/src/final_alu_cfg_regs.v",
+    "designs/final_design/src/final_alu_corrector_search.v",
+    "designs/final_design/src/final_alu_encoder_runtime.v",
+    "designs/final_design/src/final_alu_op_range_guard.v",
+    "designs/final_design/src/final_alu_range_check.v",
+    "designs/final_design/src/final_alu_runtime_cu.v",
+    "designs/final_design/src/final_alu_runtime_top.v",
+    "designs/final_design/src/final_alu_slice_runtime.v"
+  ],
+  "reachable_modules": [
+    "final_alu_runtime_top",
+    "final_alu_cfg_checker",
+    "final_alu_cfg_precompute",
+    "final_alu_cfg_regs",
+    "final_alu_corrector_search_v18",
+    "final_alu_encoder_runtime",
+    "final_alu_op_range_guard",
+    "final_alu_range_check",
+    "final_alu_runtime_cu",
+    "final_alu_slice_runtime"
+  ],
+  "duplicate_reachable_modules": {},
+  "tool": "yosys",
+  "mode": "structural",
+  "enabled": true
+}

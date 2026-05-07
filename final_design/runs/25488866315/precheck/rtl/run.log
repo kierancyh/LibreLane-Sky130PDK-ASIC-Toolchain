@@ -1,0 +1,39 @@
+VCD info: dumpfile final_alu_runtime_rtl.vcd opened for output.
+CONFIG APPLY  detect=1  corr=1  moduli={3,5,7,11,13,17}
+CONFIG READY  M_base=1155  half_range=577
+
+TEST START    op=ADD  A=10  B=7  cfg={3,5,7,11,13,17}
+RESULT ADD_10_7_BASELINE            | got: X=17 err=0 corr=0 valid=1 uncorr=0 | exp: X=17 err=0 corr=0 valid=1 uncorr=0 | cycles=429 time=4310 ns
+DETAIL        lanes z={2,2,3,6,4,0}  mismatch_mask=000000  mismatch_count=0  corrected_lane_mask=000000  candidate_base=17  state=0
+[PASS] ADD_10_7_BASELINE
+
+TEST START    op=SUB  A=50  B=200  cfg={3,5,7,11,13,17}
+RESULT SUB_50_200_BASELINE          | got: X=-150 err=0 corr=0 valid=1 uncorr=0 | exp: X=-150 err=0 corr=0 valid=1 uncorr=0 | cycles=1417 time=14190 ns
+DETAIL        lanes z={0,0,4,4,6,3}  mismatch_mask=000000  mismatch_count=0  corrected_lane_mask=000000  candidate_base=1005  state=0
+[PASS] SUB_50_200_BASELINE
+
+TEST START    op=MUL  A=40  B=40  cfg={3,5,7,11,13,17}
+RESULT MUL_40_40_RANGE_ERROR        | got: X=445 err=1 corr=0 valid=0 uncorr=0 | exp: X=445 err=1 corr=0 valid=0 uncorr=0 | cycles=1603 time=16050 ns
+DETAIL        lanes z={1,0,4,5,1,2}  mismatch_mask=110000  mismatch_count=2  corrected_lane_mask=000000  candidate_base=445  state=0
+[PASS] MUL_40_40_RANGE_ERROR
+
+TEST START    op=ADD  A=10  B=7  cfg={3,5,7,11,13,17}
+RESULT ADD_RED_FAULT_CORRECTED      | got: X=17 err=1 corr=1 valid=1 uncorr=0 | exp: X=17 err=1 corr=1 valid=1 uncorr=0 | cycles=38 time=4310 ns
+DETAIL        lanes z={2,2,3,6,5,0}  mismatch_mask=010000  mismatch_count=1  corrected_lane_mask=010000  candidate_base=17  state=0
+[PASS] ADD_RED_FAULT_CORRECTED
+
+TEST START    op=ADD  A=10  B=7  cfg={3,5,7,11,13,17}
+RESULT ADD_BASE_FAULT_CORRECTED     | got: X=17 err=1 corr=1 valid=1 uncorr=0 | exp: X=17 err=1 corr=1 valid=1 uncorr=0 | cycles=38 time=4310 ns
+DETAIL        lanes z={2,2,0,6,4,0}  mismatch_mask=000100  mismatch_count=1  corrected_lane_mask=000100  candidate_base=17  state=0
+[PASS] ADD_BASE_FAULT_CORRECTED
+
+CONFIG APPLY  detect=1  corr=1  moduli={5,7,11,13,17,19}
+CONFIG READY  M_base=5005  half_range=2502
+
+TEST START    op=ADD  A=200  B=300  cfg={5,7,11,13,17,19}
+RESULT ADD_200_300_RECONFIGURED     | got: X=500 err=0 corr=0 valid=1 uncorr=0 | exp: X=500 err=0 corr=0 valid=1 uncorr=0 | cycles=912 time=9140 ns
+DETAIL        lanes z={0,3,5,6,7,6}  mismatch_mask=000000  mismatch_count=0  corrected_lane_mask=000000  candidate_base=500  state=0
+[PASS] ADD_200_300_RECONFIGURED
+
+[PASS] FINAL_ALU runtime RTL bench PASSED.
+/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_design/tb/tb_final_alu_runtime_top.v:331: $finish called at 55235000 (1ps)
