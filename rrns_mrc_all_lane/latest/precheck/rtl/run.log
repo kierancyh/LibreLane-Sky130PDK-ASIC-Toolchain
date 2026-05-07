@@ -1,0 +1,82 @@
+VCD info: dumpfile all_lane_mrc_rtl_precheck.vcd opened for output.
+[336000] TEST                         ADD_10_7 | X_out=17 exp=17 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[616000] TEST                      ADD_123_321 | X_out=444 exp=444 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[896000] TEST                       SUB_200_50 | X_out=150 exp=150 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[1176000] TEST                      SUB_400_123 | X_out=277 exp=277 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[1456000] TEST                         SUB_WRAP | X_out=-150 exp=-150 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[1736000] TEST                  SUB_NEG_123_400 | X_out=-277 exp=-277 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[2016000] TEST                        MUL_11_17 | X_out=187 exp=187 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[2296000] TEST                        MUL_14_20 | X_out=280 exp=280 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[2576000] TEST                         MUL_9_21 | X_out=189 exp=189 err=0 exp_err=0 corr=0 exp_corr=0 valid=1 exp_valid=1
+  -> PASS
+[3126000] TEST                 ADD_WRAP_INVALID | X_out=145 exp=145 err=1 exp_err=1 corr=0 exp_corr=0 valid=0 exp_valid=0
+  -> PASS
+[3676000] TEST                 MUL_WRAP_INVALID | X_out=445 exp=445 err=1 exp_err=1 corr=0 exp_corr=0 valid=0 exp_valid=0
+  -> PASS
+[3955000] TEST                  ADD_RED13_FAULT | X_out=17 exp=17 forced_r13=5 err=1 corr=1 valid=1
+  -> PASS
+[4235000] TEST                  MUL_RED13_FAULT | X_out=280 exp=280 forced_r13=-5 err=1 corr=1 valid=1
+  -> PASS
+[4515000] TEST                  SUB_RED17_FAULT | X_out=150 exp=150 forced_r17=-2 err=1 corr=1 valid=1
+  -> PASS
+[4795000] TEST                  ADD_RED17_FAULT | X_out=444 exp=444 forced_r17=3 err=1 corr=1 valid=1
+  -> PASS
+[5345000] TEST              ADD_BASE_FAULT_CORR | lane=0 X_out=17 exp=17 orig_lane=-1 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[5895000] TEST             ADD2_BASE_FAULT_CORR | lane=0 X_out=444 exp=444 orig_lane=0 forced_lane=1 err=1 corr=1 valid=1
+  -> PASS
+[6445000] TEST              SUB_BASE_FAULT_CORR | lane=0 X_out=277 exp=277 orig_lane=1 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[6995000] TEST          SUB_NEG_BASE_FAULT_CORR | lane=0 X_out=-277 exp=-277 orig_lane=-1 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[7545000] TEST              MUL_BASE_FAULT_CORR | lane=0 X_out=187 exp=187 orig_lane=1 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[8095000] TEST             MUL2_BASE_FAULT_CORR | lane=0 X_out=280 exp=280 orig_lane=1 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[8645000] TEST              ADD_BASE_FAULT_CORR | lane=1 X_out=17 exp=17 orig_lane=2 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[9195000] TEST             ADD2_BASE_FAULT_CORR | lane=1 X_out=444 exp=444 orig_lane=-1 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[9745000] TEST              SUB_BASE_FAULT_CORR | lane=1 X_out=277 exp=277 orig_lane=2 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[10295000] TEST          SUB_NEG_BASE_FAULT_CORR | lane=1 X_out=-277 exp=-277 orig_lane=-2 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[10845000] TEST              MUL_BASE_FAULT_CORR | lane=1 X_out=187 exp=187 orig_lane=2 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[11395000] TEST             MUL2_BASE_FAULT_CORR | lane=1 X_out=280 exp=280 orig_lane=0 forced_lane=1 err=1 corr=1 valid=1
+  -> PASS
+[11945000] TEST              ADD_BASE_FAULT_CORR | lane=2 X_out=17 exp=17 orig_lane=3 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[12495000] TEST             ADD2_BASE_FAULT_CORR | lane=2 X_out=444 exp=444 orig_lane=3 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[13045000] TEST              SUB_BASE_FAULT_CORR | lane=2 X_out=277 exp=277 orig_lane=-3 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[13595000] TEST          SUB_NEG_BASE_FAULT_CORR | lane=2 X_out=-277 exp=-277 orig_lane=3 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[14145000] TEST              MUL_BASE_FAULT_CORR | lane=2 X_out=187 exp=187 orig_lane=-2 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[14695000] TEST             MUL2_BASE_FAULT_CORR | lane=2 X_out=280 exp=280 orig_lane=0 forced_lane=1 err=1 corr=1 valid=1
+  -> PASS
+[15245000] TEST              ADD_BASE_FAULT_CORR | lane=3 X_out=17 exp=17 orig_lane=-5 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[15795000] TEST             ADD2_BASE_FAULT_CORR | lane=3 X_out=444 exp=444 orig_lane=4 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[16345000] TEST              SUB_BASE_FAULT_CORR | lane=3 X_out=277 exp=277 orig_lane=2 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[16895000] TEST          SUB_NEG_BASE_FAULT_CORR | lane=3 X_out=-277 exp=-277 orig_lane=-2 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+[17445000] TEST              MUL_BASE_FAULT_CORR | lane=3 X_out=187 exp=187 orig_lane=0 forced_lane=1 err=1 corr=1 valid=1
+  -> PASS
+[17995000] TEST             MUL2_BASE_FAULT_CORR | lane=3 X_out=280 exp=280 orig_lane=5 forced_lane=0 err=1 corr=1 valid=1
+  -> PASS
+orrection-stage tests completed.
+[MRC RTL] SUMMARY | total=39 failed=0 passed=39
+/home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rrns_mrc_all_lane/tb/tb_rrns_all_lane_top_mrc.v:304: $finish called at 18020000 (1ps)

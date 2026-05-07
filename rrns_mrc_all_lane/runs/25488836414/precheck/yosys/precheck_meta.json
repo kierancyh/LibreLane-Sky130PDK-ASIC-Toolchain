@@ -1,0 +1,33 @@
+{
+  "variant_path": "designs/rrns_mrc_all_lane",
+  "safe_variant": "designs_rrns_mrc_all_lane",
+  "top_module": "rrns_all_lane_top_mrc",
+  "rtl_sources_all": [
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_corrector_mrc.v",
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_cu.v",
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_encoder.v",
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_mrc_recon.v",
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_slice.v",
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_top_mrc.v"
+  ],
+  "rtl_sources_closure": [
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_corrector_mrc.v",
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_cu.v",
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_encoder.v",
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_mrc_recon.v",
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_slice.v",
+    "designs/rrns_mrc_all_lane/src/rrns_all_lane_top_mrc.v"
+  ],
+  "reachable_modules": [
+    "rrns_all_lane_top_mrc",
+    "rrns_all_lane_corrector_mrc",
+    "rrns_all_lane_cu",
+    "rrns_all_lane_encoder",
+    "rrns_all_lane_mrc_recon",
+    "rrns_all_lane_slice"
+  ],
+  "duplicate_reachable_modules": {},
+  "tool": "yosys",
+  "mode": "structural",
+  "enabled": true
+}
