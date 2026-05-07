@@ -1,0 +1,10 @@
+{
+  "variant": "designs_rrns_mrc",
+  "clock_ns_requested": 80.0,
+  "github_run_id": "25488813331",
+  "github_run_number": "18",
+  "commit_sha": "b902972ae4b0b46911c1ac77fd49292dd34b0edc",
+  "synth_strategy_override": "",
+  "stage_label": "coarse",
+  "artifact_name": "coarse-designs_rrns_mrc-80ns-r25488813331"
+}

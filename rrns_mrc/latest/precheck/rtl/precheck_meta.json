@@ -1,0 +1,25 @@
+{
+  "variant_path": "designs/rrns_mrc",
+  "safe_variant": "designs_rrns_mrc",
+  "top_module": "rrns_top_mrc",
+  "testbench_top": "tb_rrns_top_mrc",
+  "rtl_sources": [
+    "designs/rrns_mrc/src/rrns_corrector_mrc.v",
+    "designs/rrns_mrc/src/rrns_cu.v",
+    "designs/rrns_mrc/src/rrns_encoder.v",
+    "designs/rrns_mrc/src/rrns_mrc_recon.v",
+    "designs/rrns_mrc/src/rrns_slice.v",
+    "designs/rrns_mrc/src/rrns_top_mrc.v"
+  ],
+  "testbench_sources": [
+    "designs/rrns_mrc/tb/tb_rrns_top_mrc.v"
+  ],
+  "vcd_name": "mrc_rtl_precheck.vcd",
+  "tool": "icarus",
+  "enabled": true,
+  "compile_cmd": "iverilog -g2012 -o precheck/rtl/simv -s tb_rrns_top_mrc -I /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rrns_mrc/src -I /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rrns_mrc/tb /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rrns_mrc/src/rrns_corrector_mrc.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rrns_mrc/src/rrns_cu.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rrns_mrc/src/rrns_encoder.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rrns_mrc/src/rrns_mrc_recon.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rrns_mrc/src/rrns_slice.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rrns_mrc/src/rrns_top_mrc.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/rrns_mrc/tb/tb_rrns_top_mrc.v",
+  "run_cmd": "vvp simv",
+  "compile_log": "precheck/rtl/compile.log",
+  "run_log": "precheck/rtl/run.log",
+  "vcd_path": "precheck/rtl/mrc_rtl_precheck.vcd"
+}
