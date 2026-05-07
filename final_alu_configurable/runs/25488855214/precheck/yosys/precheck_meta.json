@@ -1,0 +1,33 @@
+{
+  "variant_path": "designs/final_alu_configurable",
+  "safe_variant": "designs_final_alu_configurable",
+  "top_module": "final_alu_top",
+  "rtl_sources_all": [
+    "designs/final_alu_configurable/src/final_alu_corrector.v",
+    "designs/final_alu_configurable/src/final_alu_cu.v",
+    "designs/final_alu_configurable/src/final_alu_encoder.v",
+    "designs/final_alu_configurable/src/final_alu_recon.v",
+    "designs/final_alu_configurable/src/final_alu_slice.v",
+    "designs/final_alu_configurable/src/final_alu_top.v"
+  ],
+  "rtl_sources_closure": [
+    "designs/final_alu_configurable/src/final_alu_corrector.v",
+    "designs/final_alu_configurable/src/final_alu_cu.v",
+    "designs/final_alu_configurable/src/final_alu_encoder.v",
+    "designs/final_alu_configurable/src/final_alu_recon.v",
+    "designs/final_alu_configurable/src/final_alu_slice.v",
+    "designs/final_alu_configurable/src/final_alu_top.v"
+  ],
+  "reachable_modules": [
+    "final_alu_top",
+    "final_alu_corrector",
+    "final_alu_cu",
+    "final_alu_encoder",
+    "final_alu_recon",
+    "final_alu_slice"
+  ],
+  "duplicate_reachable_modules": {},
+  "tool": "yosys",
+  "mode": "structural",
+  "enabled": true
+}

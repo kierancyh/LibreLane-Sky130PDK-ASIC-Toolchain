@@ -1,0 +1,10 @@
+{
+  "variant": "designs_final_alu_configurable",
+  "clock_ns_requested": 55.0,
+  "github_run_id": "25488855214",
+  "github_run_number": "21",
+  "commit_sha": "9ec815573567dbf51fab224021e339f26c61968f",
+  "synth_strategy_override": "",
+  "stage_label": "mid",
+  "artifact_name": "mid-designs_final_alu_configurable-55ns-r25488855214"
+}

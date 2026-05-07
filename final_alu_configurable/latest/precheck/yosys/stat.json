@@ -1,0 +1,246 @@
+{
+   "creator": "Yosys 0.33 (git sha1 2584903a060)",
+   "invocation": "stat -json ",
+   "modules": {
+      "$paramod$1fa2aad3a259dd0e7fd5a1e2e2915b83cd3550ab\\final_alu_corrector": {
+         "num_wires":         44267,
+         "num_wire_bits":     183059,
+         "num_pub_wires":     126,
+         "num_pub_wire_bits": 2603,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         118308,
+         "num_cells_by_type": {
+            "$_AND_": 43935,
+            "$_DFFE_PP_": 47,
+            "$_MUX_": 16068,
+            "$_NOT_": 15395,
+            "$_OR_": 26434,
+            "$_SDFFE_PN0P_": 6,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 16421
+         }
+      },
+      "$paramod$42a31636d45154a4a9e15da7e4670447f6046293\\final_alu_slice": {
+         "num_wires":         2876,
+         "num_wire_bits":     11339,
+         "num_pub_wires":     16,
+         "num_pub_wire_bits": 207,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         7770,
+         "num_cells_by_type": {
+            "$_AND_": 2883,
+            "$_DFFE_PP_": 2,
+            "$_MUX_": 1006,
+            "$_NOT_": 1017,
+            "$_OR_": 1786,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 1074
+         }
+      },
+      "$paramod$5214227cdbd876971d30ff4a869b2ed47547f507\\final_alu_slice": {
+         "num_wires":         2736,
+         "num_wire_bits":     11212,
+         "num_pub_wires":     16,
+         "num_pub_wire_bits": 211,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         7498,
+         "num_cells_by_type": {
+            "$_AND_": 2805,
+            "$_DFFE_PP_": 3,
+            "$_MUX_": 979,
+            "$_NOT_": 961,
+            "$_OR_": 1689,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 1059
+         }
+      },
+      "$paramod$8208ef17ccb8f00ef30e84808973b91f74de98ea\\final_alu_slice": {
+         "num_wires":         2825,
+         "num_wire_bits":     11271,
+         "num_pub_wires":     16,
+         "num_pub_wire_bits": 211,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         7622,
+         "num_cells_by_type": {
+            "$_AND_": 2838,
+            "$_DFFE_PP_": 3,
+            "$_MUX_": 979,
+            "$_NOT_": 992,
+            "$_OR_": 1749,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 1059
+         }
+      },
+      "$paramod$8a0ad45c90698b2a840e021f0aaca00c1d72e963\\final_alu_slice": {
+         "num_wires":         2680,
+         "num_wire_bits":     11143,
+         "num_pub_wires":     16,
+         "num_pub_wire_bits": 215,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         7351,
+         "num_cells_by_type": {
+            "$_AND_": 2758,
+            "$_DFFE_PP_": 4,
+            "$_MUX_": 952,
+            "$_NOT_": 937,
+            "$_OR_": 1652,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 1046
+         }
+      },
+      "$paramod$99b12a05d2ed44cf950545ad36cac21ecb1e662e\\final_alu_encoder": {
+         "num_wires":         15045,
+         "num_wire_bits":     57337,
+         "num_pub_wires":     48,
+         "num_pub_wire_bits": 1203,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         39969,
+         "num_cells_by_type": {
+            "$_AND_": 14919,
+            "$_MUX_": 5444,
+            "$_NOT_": 5379,
+            "$_OR_": 8906,
+            "$_XOR_": 5321
+         }
+      },
+      "$paramod$e0206361d5f8e828d02f4b2ac645ef7c784fc263\\final_alu_slice": {
+         "num_wires":         2701,
+         "num_wire_bits":     11123,
+         "num_pub_wires":     16,
+         "num_pub_wire_bits": 219,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         7340,
+         "num_cells_by_type": {
+            "$_AND_": 2755,
+            "$_DFFE_PP_": 5,
+            "$_MUX_": 925,
+            "$_NOT_": 940,
+            "$_OR_": 1668,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 1045
+         }
+      },
+      "$paramod$ed25d6a5ad996a791b413eb985f8829637012a9c\\final_alu_slice": {
+         "num_wires":         2682,
+         "num_wire_bits":     11115,
+         "num_pub_wires":     16,
+         "num_pub_wire_bits": 215,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         7357,
+         "num_cells_by_type": {
+            "$_AND_": 2761,
+            "$_DFFE_PP_": 4,
+            "$_MUX_": 952,
+            "$_NOT_": 938,
+            "$_OR_": 1654,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 1046
+         }
+      },
+      "$paramod\\final_alu_recon\\OUT_WIDTH=s32'00000000000000000000000000010000": {
+         "num_wires":         10434,
+         "num_wire_bits":     41493,
+         "num_pub_wires":     32,
+         "num_pub_wire_bits": 467,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         27664,
+         "num_cells_by_type": {
+            "$_AND_": 10306,
+            "$_MUX_": 3663,
+            "$_NOT_": 3635,
+            "$_OR_": 6299,
+            "$_SDFFE_PN0P_": 11,
+            "$_SDFF_PN0_": 2,
+            "$_XOR_": 3748
+         }
+      },
+      "\\final_alu_cu": {
+         "num_wires":         79,
+         "num_wire_bits":     215,
+         "num_pub_wires":     17,
+         "num_pub_wire_bits": 26,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         133,
+         "num_cells_by_type": {
+            "$_AND_": 19,
+            "$_MUX_": 25,
+            "$_NOT_": 18,
+            "$_OR_": 60,
+            "$_SDFFE_PN0P_": 4,
+            "$_SDFF_PP0_": 7
+         }
+      },
+      "\\final_alu_top": {
+         "num_wires":         103,
+         "num_wire_bits":     409,
+         "num_pub_wires":     91,
+         "num_pub_wire_bits": 380,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         121,
+         "num_cells_by_type": {
+            "$_AND_": 6,
+            "$_DFFE_PP_": 34,
+            "$_DFF_P_": 34,
+            "$_MUX_": 12,
+            "$_NOT_": 2,
+            "$_OR_": 3,
+            "$_SDFFE_PN0P_": 19,
+            "$paramod$1fa2aad3a259dd0e7fd5a1e2e2915b83cd3550ab\\final_alu_corrector": 1,
+            "$paramod$42a31636d45154a4a9e15da7e4670447f6046293\\final_alu_slice": 1,
+            "$paramod$5214227cdbd876971d30ff4a869b2ed47547f507\\final_alu_slice": 1,
+            "$paramod$8208ef17ccb8f00ef30e84808973b91f74de98ea\\final_alu_slice": 1,
+            "$paramod$8a0ad45c90698b2a840e021f0aaca00c1d72e963\\final_alu_slice": 1,
+            "$paramod$99b12a05d2ed44cf950545ad36cac21ecb1e662e\\final_alu_encoder": 2,
+            "$paramod$e0206361d5f8e828d02f4b2ac645ef7c784fc263\\final_alu_slice": 1,
+            "$paramod$ed25d6a5ad996a791b413eb985f8829637012a9c\\final_alu_slice": 1,
+            "$paramod\\final_alu_recon\\OUT_WIDTH=s32'00000000000000000000000000010000": 1,
+            "final_alu_cu": 1
+         }
+      }
+   },
+      "design": {
+         "num_wires":         101473,
+         "num_wire_bits":     407053,
+         "num_pub_wires":     458,
+         "num_pub_wire_bits": 7160,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         271091,
+         "num_cells_by_type": {
+            "$_AND_": 100904,
+            "$_DFFE_PP_": 102,
+            "$_DFF_P_": 34,
+            "$_MUX_": 36449,
+            "$_NOT_": 35593,
+            "$_OR_": 60806,
+            "$_SDFFE_PN0P_": 40,
+            "$_SDFF_PN0_": 16,
+            "$_SDFF_PP0_": 7,
+            "$_XOR_": 37140
+         }
+      }
+}
+

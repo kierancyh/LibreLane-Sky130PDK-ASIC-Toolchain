@@ -1,0 +1,242 @@
+
+18. Printing statistics.
+
+=== $paramod$1fa2aad3a259dd0e7fd5a1e2e2915b83cd3550ab\final_alu_corrector ===
+
+   Number of wires:              44267
+   Number of wire bits:         183059
+   Number of public wires:         126
+   Number of public wire bits:    2603
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:             118308
+     $_AND_                      43935
+     $_DFFE_PP_                     47
+     $_MUX_                      16068
+     $_NOT_                      15395
+     $_OR_                       26434
+     $_SDFFE_PN0P_                   6
+     $_SDFF_PN0_                     2
+     $_XOR_                      16421
+
+=== $paramod$42a31636d45154a4a9e15da7e4670447f6046293\final_alu_slice ===
+
+   Number of wires:               2876
+   Number of wire bits:          11339
+   Number of public wires:          16
+   Number of public wire bits:     207
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               7770
+     $_AND_                       2883
+     $_DFFE_PP_                      2
+     $_MUX_                       1006
+     $_NOT_                       1017
+     $_OR_                        1786
+     $_SDFF_PN0_                     2
+     $_XOR_                       1074
+
+=== $paramod$5214227cdbd876971d30ff4a869b2ed47547f507\final_alu_slice ===
+
+   Number of wires:               2736
+   Number of wire bits:          11212
+   Number of public wires:          16
+   Number of public wire bits:     211
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               7498
+     $_AND_                       2805
+     $_DFFE_PP_                      3
+     $_MUX_                        979
+     $_NOT_                        961
+     $_OR_                        1689
+     $_SDFF_PN0_                     2
+     $_XOR_                       1059
+
+=== $paramod$8208ef17ccb8f00ef30e84808973b91f74de98ea\final_alu_slice ===
+
+   Number of wires:               2825
+   Number of wire bits:          11271
+   Number of public wires:          16
+   Number of public wire bits:     211
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               7622
+     $_AND_                       2838
+     $_DFFE_PP_                      3
+     $_MUX_                        979
+     $_NOT_                        992
+     $_OR_                        1749
+     $_SDFF_PN0_                     2
+     $_XOR_                       1059
+
+=== $paramod$8a0ad45c90698b2a840e021f0aaca00c1d72e963\final_alu_slice ===
+
+   Number of wires:               2680
+   Number of wire bits:          11143
+   Number of public wires:          16
+   Number of public wire bits:     215
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               7351
+     $_AND_                       2758
+     $_DFFE_PP_                      4
+     $_MUX_                        952
+     $_NOT_                        937
+     $_OR_                        1652
+     $_SDFF_PN0_                     2
+     $_XOR_                       1046
+
+=== $paramod$99b12a05d2ed44cf950545ad36cac21ecb1e662e\final_alu_encoder ===
+
+   Number of wires:              15045
+   Number of wire bits:          57337
+   Number of public wires:          48
+   Number of public wire bits:    1203
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              39969
+     $_AND_                      14919
+     $_MUX_                       5444
+     $_NOT_                       5379
+     $_OR_                        8906
+     $_XOR_                       5321
+
+=== $paramod$e0206361d5f8e828d02f4b2ac645ef7c784fc263\final_alu_slice ===
+
+   Number of wires:               2701
+   Number of wire bits:          11123
+   Number of public wires:          16
+   Number of public wire bits:     219
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               7340
+     $_AND_                       2755
+     $_DFFE_PP_                      5
+     $_MUX_                        925
+     $_NOT_                        940
+     $_OR_                        1668
+     $_SDFF_PN0_                     2
+     $_XOR_                       1045
+
+=== $paramod$ed25d6a5ad996a791b413eb985f8829637012a9c\final_alu_slice ===
+
+   Number of wires:               2682
+   Number of wire bits:          11115
+   Number of public wires:          16
+   Number of public wire bits:     215
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               7357
+     $_AND_                       2761
+     $_DFFE_PP_                      4
+     $_MUX_                        952
+     $_NOT_                        938
+     $_OR_                        1654
+     $_SDFF_PN0_                     2
+     $_XOR_                       1046
+
+=== $paramod\final_alu_recon\OUT_WIDTH=s32'00000000000000000000000000010000 ===
+
+   Number of wires:              10434
+   Number of wire bits:          41493
+   Number of public wires:          32
+   Number of public wire bits:     467
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              27664
+     $_AND_                      10306
+     $_MUX_                       3663
+     $_NOT_                       3635
+     $_OR_                        6299
+     $_SDFFE_PN0P_                  11
+     $_SDFF_PN0_                     2
+     $_XOR_                       3748
+
+=== final_alu_cu ===
+
+   Number of wires:                 79
+   Number of wire bits:            215
+   Number of public wires:          17
+   Number of public wire bits:      26
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                133
+     $_AND_                         19
+     $_MUX_                         25
+     $_NOT_                         18
+     $_OR_                          60
+     $_SDFFE_PN0P_                   4
+     $_SDFF_PP0_                     7
+
+=== final_alu_top ===
+
+   Number of wires:                103
+   Number of wire bits:            409
+   Number of public wires:          91
+   Number of public wire bits:     380
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                121
+     $_AND_                          6
+     $_DFFE_PP_                     34
+     $_DFF_P_                       34
+     $_MUX_                         12
+     $_NOT_                          2
+     $_OR_                           3
+     $_SDFFE_PN0P_                  19
+     $paramod$1fa2aad3a259dd0e7fd5a1e2e2915b83cd3550ab\final_alu_corrector      1
+     $paramod$42a31636d45154a4a9e15da7e4670447f6046293\final_alu_slice      1
+     $paramod$5214227cdbd876971d30ff4a869b2ed47547f507\final_alu_slice      1
+     $paramod$8208ef17ccb8f00ef30e84808973b91f74de98ea\final_alu_slice      1
+     $paramod$8a0ad45c90698b2a840e021f0aaca00c1d72e963\final_alu_slice      1
+     $paramod$99b12a05d2ed44cf950545ad36cac21ecb1e662e\final_alu_encoder      2
+     $paramod$e0206361d5f8e828d02f4b2ac645ef7c784fc263\final_alu_slice      1
+     $paramod$ed25d6a5ad996a791b413eb985f8829637012a9c\final_alu_slice      1
+     $paramod\final_alu_recon\OUT_WIDTH=s32'00000000000000000000000000010000      1
+     final_alu_cu                    1
+
+=== design hierarchy ===
+
+   final_alu_top                     1
+     $paramod$1fa2aad3a259dd0e7fd5a1e2e2915b83cd3550ab\final_alu_corrector      1
+     $paramod$42a31636d45154a4a9e15da7e4670447f6046293\final_alu_slice      1
+     $paramod$5214227cdbd876971d30ff4a869b2ed47547f507\final_alu_slice      1
+     $paramod$8208ef17ccb8f00ef30e84808973b91f74de98ea\final_alu_slice      1
+     $paramod$8a0ad45c90698b2a840e021f0aaca00c1d72e963\final_alu_slice      1
+     $paramod$99b12a05d2ed44cf950545ad36cac21ecb1e662e\final_alu_encoder      2
+     $paramod$e0206361d5f8e828d02f4b2ac645ef7c784fc263\final_alu_slice      1
+     $paramod$ed25d6a5ad996a791b413eb985f8829637012a9c\final_alu_slice      1
+     $paramod\final_alu_recon\OUT_WIDTH=s32'00000000000000000000000000010000      1
+     final_alu_cu                    1
+
+   Number of wires:             101473
+   Number of wire bits:         407053
+   Number of public wires:         458
+   Number of public wire bits:    7160
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:             271091
+     $_AND_                     100904
+     $_DFFE_PP_                    102
+     $_DFF_P_                       34
+     $_MUX_                      36449
+     $_NOT_                      35593
+     $_OR_                       60806
+     $_SDFFE_PN0P_                  40
+     $_SDFF_PN0_                    16
+     $_SDFF_PP0_                     7
+     $_XOR_                      37140
+

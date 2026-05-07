@@ -1,0 +1,25 @@
+{
+  "variant_path": "designs/final_alu_configurable",
+  "safe_variant": "designs_final_alu_configurable",
+  "top_module": "final_alu_top",
+  "testbench_top": "tb_final_alu_top",
+  "rtl_sources": [
+    "designs/final_alu_configurable/src/final_alu_corrector.v",
+    "designs/final_alu_configurable/src/final_alu_cu.v",
+    "designs/final_alu_configurable/src/final_alu_encoder.v",
+    "designs/final_alu_configurable/src/final_alu_recon.v",
+    "designs/final_alu_configurable/src/final_alu_slice.v",
+    "designs/final_alu_configurable/src/final_alu_top.v"
+  ],
+  "testbench_sources": [
+    "designs/final_alu_configurable/tb/tb_final_alu_top.v"
+  ],
+  "vcd_name": "final_alu_rtl_precheck.vcd",
+  "tool": "icarus",
+  "enabled": true,
+  "compile_cmd": "iverilog -g2012 -o precheck/rtl/simv -s tb_final_alu_top -I /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_alu_configurable/src -I /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_alu_configurable/tb /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_alu_configurable/src/final_alu_corrector.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_alu_configurable/src/final_alu_cu.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_alu_configurable/src/final_alu_encoder.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_alu_configurable/src/final_alu_recon.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_alu_configurable/src/final_alu_slice.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_alu_configurable/src/final_alu_top.v /home/runner/work/LibreLane-Sky130PDK-ASIC-Toolchain/LibreLane-Sky130PDK-ASIC-Toolchain/designs/final_alu_configurable/tb/tb_final_alu_top.v",
+  "run_cmd": "vvp simv",
+  "compile_log": "precheck/rtl/compile.log",
+  "run_log": "precheck/rtl/run.log",
+  "vcd_path": "precheck/rtl/final_alu_rtl_precheck.vcd"
+}
